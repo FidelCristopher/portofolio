@@ -34,19 +34,19 @@ export function EducationSection() {
                       <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path>
                     </svg>
                   </div>
-                  <span className="flex-1 font-medium text-balance">Universitas Dian Nuswantoro</span>
+                  <span className="flex-1 font-medium text-balance">Binus University</span>
                 </div>
                 <div className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
                   <dl>
                     <dt className="sr-only">Period</dt>
                     <dd className="flex items-center gap-0.5 font-mono text-xs tabular-nums">
-                      <span>2023</span><span>-</span><span>2027</span>
+                      <span>2024</span><span>-</span><span>now</span>
                     </dd>
                   </dl>
                   <div data-orientation="vertical" role="none" data-slot="separator" className="shrink-0 bg-border data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:h-4 data-vertical:self-center"></div>
                   <dl>
                     <dt className="sr-only">Duration</dt>
-                    <dd className="font-mono text-xs tabular-nums">4y</dd>
+                    <dd className="font-mono text-xs tabular-nums">Present</dd>
                   </dl>
                 </div>
               </div>
