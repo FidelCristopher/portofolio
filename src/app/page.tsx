@@ -1,6 +1,6 @@
 import { AboutHeader } from "@/components/portfolio/root/AboutHeader";
 import { StickyNav } from "@/components/portfolio/root/StickyNav";
-import { ExperienceSection } from "@/components/portfolio/root/ExperienceSection";
+import { EducationSection } from "@/components/portfolio/root/EducationSection";
 import { ProjectsSection } from "@/components/portfolio/root/ProjectsSection";
 import { StackSection } from "@/components/portfolio/root/StackSection";
 import { GithubSection } from "@/components/portfolio/root/GithubSection";
@@ -19,7 +19,7 @@ export default function Home() {
           <StickyNav />
           <div id="main" tabIndex={-1} className="outline-none">
             <SectionDivider />
-            <ExperienceSection />
+            <EducationSection />
             <SectionDivider />
             <ProjectsSection />
             <SectionDivider />
