@@ -4,8 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://fidelcristopher.dev"),
   title: "Fidel Cristopher | AI & Machine Learning Engineer",
-  description:
-    "I'm Fidel Cristopher, an AI and machine learning engineer from Indonesia. I build practical software, data products, and machine learning systems.",
+  description: "Undergraduate student at Binus University passionate about AI, Machine Learning, and Deep Learning. Bridging the gap between algorithm design and intuitive UI/UX using Figma and modern web development.",
   keywords: [
     "Fidel Cristopher",
     "fidelcristopher",
@@ -19,8 +18,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Fidel Cristopher" }],
   openGraph: {
     title: "Fidel Cristopher | AI & Machine Learning Engineer",
-    description:
-      "I'm Fidel Cristopher, an AI and machine learning engineer from Indonesia. I build practical software, data products, and machine learning systems.",
+    description: "Undergraduate student at Binus University passionate about AI, Machine Learning, and Deep Learning. Bridging the gap between algorithm design and intuitive UI/UX using Figma and modern web development.",
     url: "https://fidelcristopher.dev",
     siteName: "Fidel Cristopher",
     locale: "en_US",
@@ -30,8 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Fidel Cristopher | AI & Machine Learning Engineer",
-    description:
-      "I'm Fidel Cristopher, an AI and machine learning engineer from Indonesia. I build practical software, data products, and machine learning systems.",
+    description: "Undergraduate student at Binus University passionate about AI, Machine Learning, and Deep Learning. Bridging the gap between algorithm design and intuitive UI/UX using Figma and modern web development.",
     creator: "@fidelcristopher",
     images: ["/image/og.png"]
   }
