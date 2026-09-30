@@ -1,0 +1,270 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@font-face {
+  font-family: "GeistSans";
+  src: url("/fonts/geist-sans-latin.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: "GeistMono";
+  src: url("/fonts/geist-mono-latin.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/caveat-latin.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 500;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-line: var(--line);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: "GeistSans", "GeistSans Fallback", Arial, sans-serif;
+  --font-mono: "GeistMono", ui-monospace, monospace;
+  --font-handwritten: "Caveat", "Caveat Fallback", cursive;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --font-sans: "GeistSans", Arial, sans-serif;
+  --font-mono: "GeistMono", monospace;
+  --font-handwritten: "Caveat", cursive;
+  --background: #eaedf0;
+  --foreground: #09090b;
+  --primary: #09090b;
+  --primary-foreground: #fff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #09090b;
+  --muted: #f4f4f5;
+  --muted-foreground: #6b7280;
+  --card: #fff;
+  --card-foreground: #09090b;
+  --popover: #fff;
+  --popover-foreground: #09090b;
+  --accent: #f4f4f5;
+  --accent-foreground: #09090b;
+  --border: #e5e7eb;
+  --line: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #9ca3af;
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ededed;
+  --primary: #ededed;
+  --primary-foreground: #000;
+  --secondary: #121215;
+  --secondary-foreground: #ededed;
+  --muted: #121215;
+  --muted-foreground: #a1a1aa;
+  --card: #050505;
+  --card-foreground: #ededed;
+  --popover: #050505;
+  --popover-foreground: #ededed;
+  --accent: #121215;
+  --accent-foreground: #ededed;
+  --border: #222226;
+  --line: #222226;
+  --input: #222226;
+  --ring: #52525b;
+}
+
+/* Handwritten font utility */
+.font-handwritten {
+  font-family: var(--font-handwritten);
+}
+
+/* Footer tree & stamp styles */
+.footer-braille {
+  margin-top: calc(var(--spacing, 0.25rem) * 1);
+  font-family: var(--font-handwritten);
+  letter-spacing: 0.15em;
+  color: var(--color-muted-foreground);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.footer-stamp {
+  min-height: calc(var(--spacing, 0.25rem) * 5.5);
+  align-items: center;
+  gap: calc(var(--spacing, 0.25rem) * 2);
+  font-family: var(--font-handwritten);
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in oklab, var(--color-muted-foreground) 88%, transparent);
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+}
+
+.footer-stamp-lines {
+  font-family: var(--font-handwritten);
+  letter-spacing: 0.05em;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 1.1rem;
+  display: flex;
+}
+
+.footer-stamp-lines > span {
+  letter-spacing: 0.08em;
+  color: color-mix(in oklab, var(--color-muted-foreground) 78%, transparent);
+}
+
+.footer-stamp-lines time,
+.footer-stamp-lines > span:last-child:not(:first-child) {
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  min-width: 8ch;
+  color: color-mix(in oklab, var(--color-muted-foreground) 90%, transparent);
+  display: block;
+}
+
+.footer-clock {
+  width: calc(var(--spacing, 0.25rem) * 5.5);
+  height: calc(var(--spacing, 0.25rem) * 5.5);
+  fill: none;
+  stroke: currentColor;
+  flex: none;
+  overflow: visible;
+}
+
+.footer-clock .footer-clock-ring,
+.footer-clock .footer-clock-ticks {
+  opacity: 0.28;
+  stroke-width: 1px;
+}
+
+.footer-clock .footer-clock-ticks,
+.footer-clock .footer-clock-hour,
+.footer-clock .footer-clock-minute,
+.footer-clock .footer-clock-second {
+  stroke-linecap: round;
+}
+
+.footer-clock .footer-clock-hour {
+  opacity: 0.78;
+  stroke-width: 1.6px;
+}
+
+.footer-clock .footer-clock-minute {
+  opacity: 0.72;
+  stroke-width: 1.2px;
+}
+
+.footer-clock .footer-clock-second {
+  opacity: 0.42;
+  stroke-width: 0.75px;
+}
+
+.footer-clock .footer-clock-pin {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-tree > ul {
+  flex-direction: column;
+  display: flex;
+}
+
+.footer-tree li {
+  min-height: calc(var(--spacing, 0.25rem) * 7);
+  padding-left: calc(var(--spacing, 0.25rem) * 4.5);
+  font-family: var(--font-handwritten);
+  letter-spacing: 0.05em;
+  align-items: center;
+  font-size: 1.1rem;
+  display: flex;
+  position: relative;
+}
+
+.footer-tree li:before,
+.footer-tree li:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  background: color-mix(in oklab, var(--color-muted-foreground) 22%, transparent);
+}
+
+.footer-tree li:before {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+.footer-tree li:last-child:before {
+  height: 50%;
+  bottom: auto;
+}
+
+.footer-tree li:after {
+  height: 1px;
+  width: calc(var(--spacing, 0.25rem) * 2.5);
+  top: 50%;
+}
+
+.footer-tree li > * {
+  min-width: 0;
+  flex: 1;
+}
+
+.footer-label {
+  margin-bottom: calc(var(--spacing, 0.25rem) * 1.5);
+  font-family: var(--font-handwritten);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  user-select: none;
+  color: color-mix(in oklab, var(--color-muted-foreground) 75%, transparent);
+  font-size: 1.15rem;
+}
+
+.footer-globe {
+  width: calc(var(--spacing, 0.25rem) * 5.5);
+  height: calc(var(--spacing, 0.25rem) * 5.5);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.7px;
+  opacity: 0.5;
+  flex: none;
+}
+
+.defer-offscreen {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 120px;
+}
