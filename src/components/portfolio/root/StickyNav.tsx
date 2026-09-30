@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
-export function StickyNav() {
-  const [activeTab, setActiveTab] = useState(0);
+export function StickyNav({ activeIndex = 0 }: { activeIndex?: number }) {
+  const [activeTab, setActiveTab] = useState(activeIndex);
 
   const navItems = [
     {
       id: "home",
       label: "Home",
-      href: "#about",
+      href: "/",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className="size-4 shrink-0 transition-transform duration-200 sm:size-4.5 group-hover:-translate-y-0.5 group-hover:scale-105">
           <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="currentColor" opacity="0.16"></path>
@@ -21,7 +22,7 @@ export function StickyNav() {
     {
       id: "projects",
       label: "Projects",
-      href: "#projects",
+      href: "/projects",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className="size-4 shrink-0 transition-transform duration-200 sm:size-4.5 group-hover:scale-105">
           <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2" fill="currentColor" opacity="0.06"></path>
@@ -33,7 +34,7 @@ export function StickyNav() {
     {
       id: "contributions",
       label: "My Contribution",
-      href: "#github",
+      href: "/#github",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className="size-4 shrink-0 transition-transform duration-200 sm:size-4.5 group-hover:scale-105">
           <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z" fill="currentColor" opacity="0.16"></path>
@@ -64,7 +65,7 @@ export function StickyNav() {
         {navItems.map((item, index) => {
           const isActive = activeTab === index;
           return (
-            <a
+            <Link
               key={item.id}
               href={item.href}
               target={item.target || undefined}
@@ -79,7 +80,7 @@ export function StickyNav() {
               <span className="font-sans whitespace-nowrap overflow-hidden text-ellipsis">
                 {item.label}
               </span>
-            </a>
+            </Link>
           );
         })}
 
