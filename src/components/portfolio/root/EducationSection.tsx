@@ -76,19 +76,19 @@ export function EducationSection() {
                       <circle cx="12" cy="9" r="2"></circle>
                     </svg>
                   </div>
-                  <span className="flex-1 font-medium text-balance">SMA 3 Rembang</span>
+                  <span className="flex-1 font-medium text-balance">SMA Kristen Nasional Anglo</span>
                 </div>
                 <div className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
                   <dl>
                     <dt className="sr-only">Period</dt>
                     <dd className="flex items-center gap-0.5 font-mono text-xs tabular-nums">
-                      <span>2020</span><span>-</span><span>2023</span>
+                      <span>2022</span><span>-</span><span>2024</span>
                     </dd>
                   </dl>
                   <div data-orientation="vertical" role="none" data-slot="separator" className="shrink-0 bg-border data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:h-4 data-vertical:self-center"></div>
                   <dl>
                     <dt className="sr-only">Duration</dt>
-                    <dd className="font-mono text-xs tabular-nums">3y</dd>
+                    <dd className="font-mono text-xs tabular-nums">2y</dd>
                   </dl>
                 </div>
               </div>
