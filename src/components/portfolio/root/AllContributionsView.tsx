@@ -2,42 +2,69 @@ import React from "react";
 import { GithubSection } from "./GithubSection";
 
 export function AllContributionsView() {
-  const highlights = [
+  const userRepos = [
     {
-      title: "End-to-End MLOps Pipeline",
-      repo: "fidelcristopher/mlops-pipeline",
-      description: "Automated preprocessing, MLflow experiment tracking, Docker packaging, and Prometheus/Grafana metrics monitoring.",
-      stars: 12,
-      forks: 3,
-      tags: ["Python", "MLflow", "Docker", "Prometheus"],
-      commits: "95 commits"
+      title: "AMORA",
+      repo: "FidelCristopher/AMORA",
+      url: "https://github.com/FidelCristopher/AMORA",
+      description: "AI-powered pregnancy fitness mobile app with real-time computer vision movement detection, 1D-CNN safety classification, and LLM feedback.",
+      stars: 1,
+      language: "Python",
+      tags: ["Python", "Computer Vision", "1D-CNN", "LLM", "Healthcare AI"]
     },
     {
-      title: "Polsek Rembang RAG Service",
-      repo: "fidelcristopher/polsek-rag-assistant",
-      description: "Production RAG assistant querying official SOP documentation with vector embeddings and LangChain.",
-      stars: 8,
-      forks: 2,
-      tags: ["LangChain", "Gemini API", "FastAPI", "VectorDB"],
-      commits: "85 commits"
+      title: "Scientific-Computing",
+      repo: "FidelCristopher/Scientific-Computing",
+      url: "https://github.com/FidelCristopher/Scientific-Computing",
+      description: "Scientific computing solutions, numerical algorithms, optimization, and linear algebra implementations.",
+      stars: 0,
+      language: "Jupyter Notebook",
+      tags: ["Jupyter Notebook", "Python", "NumPy", "Scientific Computing"]
     },
     {
-      title: "SmartCanteen AI Recommendation Engine",
-      repo: "fidelcristopher/smart-canteen-ai",
-      description: "Content-based filtering model and full-stack order management system with PostgreSQL and Midtrans payment gateway.",
-      stars: 15,
-      forks: 4,
-      tags: ["PostgreSQL", "Next.js", "Scikit-Learn", "Midtrans"],
-      commits: "110 commits"
+      title: "ProjectAI",
+      repo: "FidelCristopher/ProjectAI",
+      url: "https://github.com/FidelCristopher/ProjectAI",
+      description: "Artificial Intelligence and machine learning models experimentation, neural network workflows, and training scripts.",
+      stars: 0,
+      language: "Python",
+      tags: ["Python", "Machine Learning", "Neural Networks", "Deep Learning"]
     },
     {
-      title: "Base Realms Onchain App",
-      repo: "fidelcristopher/base-realms",
-      description: "Top 5 Finalist hackathon project built on Base network with responsive UI and smart contract integration.",
-      stars: 24,
-      forks: 7,
-      tags: ["Solidity", "Base", "TypeScript", "Tailwind CSS"],
-      commits: "140 commits"
+      title: "lnt-final-project",
+      repo: "FidelCristopher/lnt-final-project",
+      url: "https://github.com/FidelCristopher/lnt-final-project",
+      description: "Full-stack e-commerce web platform for Back End LNT Final Project with relational database, authentication, and order workflows.",
+      stars: 0,
+      language: "Blade / PHP",
+      tags: ["PHP", "Laravel", "MySQL", "E-Commerce"]
+    },
+    {
+      title: "midproject_bncc",
+      repo: "FidelCristopher/midproject_bncc",
+      url: "https://github.com/FidelCristopher/midproject_bncc",
+      description: "Backend architecture and REST API development for BNCC mid-project with structured routing and data validation.",
+      stars: 0,
+      language: "PHP",
+      tags: ["PHP", "Backend API", "BNCC", "Database"]
+    },
+    {
+      title: "LaundryYuk",
+      repo: "FidelCristopher/LaundryYuk",
+      url: "https://github.com/FidelCristopher/LaundryYuk",
+      description: "Web application for on-demand laundry service booking, customer order tracking, and service management.",
+      stars: 0,
+      language: "JavaScript",
+      tags: ["JavaScript", "Full-Stack", "Web App"]
+    },
+    {
+      title: "aolDatabase",
+      repo: "FidelCristopher/aolDatabase",
+      url: "https://github.com/FidelCristopher/aolDatabase",
+      description: "Relational database design, normalization, queries, and backend schema management.",
+      stars: 0,
+      language: "PHP / SQL",
+      tags: ["SQL", "Database Design", "PHP", "Queries"]
     }
   ];
 
@@ -49,9 +76,18 @@ export function AllContributionsView() {
           <h2 data-slot="panel-title" className="font-handwritten text-3xl font-semibold tracking-tight">
             GitHub Contributions
           </h2>
-          <span className="font-mono text-xs text-muted-foreground">
-            2,619 contributions in the last year
-          </span>
+          <a
+            href="https://github.com/FidelCristopher"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+          >
+            @FidelCristopher
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
         </div>
       </header>
 
@@ -61,41 +97,54 @@ export function AllContributionsView() {
       {/* Stats Summary Grid */}
       <div className="grid grid-cols-2 gap-px border-y border-line bg-line sm:grid-cols-4">
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Total Contributions</span>
-          <span className="font-mono text-2xl font-bold tracking-tight text-foreground">2,619</span>
-        </div>
-        <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Longest Streak</span>
-          <span className="font-mono text-2xl font-bold tracking-tight text-foreground">42 days</span>
+          <span className="text-xs text-muted-foreground">Year Contributions</span>
+          <span className="font-mono text-2xl font-bold tracking-tight text-foreground">73</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Public Repos</span>
-          <span className="font-mono text-2xl font-bold tracking-tight text-foreground">15+</span>
+          <span className="font-mono text-2xl font-bold tracking-tight text-foreground">7+</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">GitHub Stars</span>
-          <span className="font-mono text-2xl font-bold tracking-tight text-foreground">59 ★</span>
+          <span className="text-xs text-muted-foreground">Primary Focus</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">AI &amp; Full-Stack</span>
+        </div>
+        <div className="flex flex-col gap-1 bg-background p-4">
+          <span className="text-xs text-muted-foreground">Profile Status</span>
+          <span className="font-mono text-base font-bold tracking-tight text-emerald-500">Active</span>
         </div>
       </div>
 
-      {/* Repository Highlights */}
+      {/* Real Repositories Grid */}
       <div className="p-4 border-b border-line">
-        <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground mb-3">
-          Featured Repositories &amp; Open Source
-        </h3>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
+            Repositories &amp; Projects
+          </h3>
+          <a
+            href="https://github.com/FidelCristopher?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
+          >
+            View all on GitHub →
+          </a>
+        </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {highlights.map((item) => (
-            <div
+          {userRepos.map((item) => (
+            <a
               key={item.repo}
-              className="flex flex-col justify-between rounded-lg border border-line bg-muted/30 p-3.5 transition-colors hover:border-foreground/30 hover:bg-muted/60"
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col justify-between rounded-lg border border-line bg-muted/30 p-3.5 transition-colors hover:border-foreground/30 hover:bg-muted/60"
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-1.5">
-                  <h4 className="font-medium text-sm text-foreground hover:underline cursor-pointer">
+                  <h4 className="font-medium text-sm text-foreground group-hover:underline">
                     {item.title}
                   </h4>
                   <span className="font-mono text-[11px] text-muted-foreground shrink-0">
-                    {item.commits}
+                    {item.language}
                   </span>
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 mb-3">
@@ -112,7 +161,7 @@ export function AllContributionsView() {
                   </span>
                 ))}
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
