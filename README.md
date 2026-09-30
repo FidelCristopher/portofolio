@@ -1,4 +1,4 @@
-# Portfolio — Firdaus Khotibul Zickrian
+# Portfolio — Fidel Cristopher
 
 Personal portfolio website built with modern web technologies: Next.js 16, React 19, Tailwind CSS v4, and TypeScript.
 

@@ -1,14 +1,14 @@
-import { AboutHeader } from "@/components/sites/zickrian-dev/root/AboutHeader";
-import { StickyNav } from "@/components/sites/zickrian-dev/root/StickyNav";
-import { ExperienceSection } from "@/components/sites/zickrian-dev/root/ExperienceSection";
-import { ProjectsSection } from "@/components/sites/zickrian-dev/root/ProjectsSection";
-import { StackSection } from "@/components/sites/zickrian-dev/root/StackSection";
-import { GithubSection } from "@/components/sites/zickrian-dev/root/GithubSection";
-import { AwardsSection } from "@/components/sites/zickrian-dev/root/AwardsSection";
-import { PublicationsSection } from "@/components/sites/zickrian-dev/root/PublicationsSection";
-import { CertificationsSection } from "@/components/sites/zickrian-dev/root/CertificationsSection";
-import { SectionDivider } from "@/components/sites/zickrian-dev/root/SectionDivider";
-import { SiteFooter } from "@/components/sites/zickrian-dev/root/SiteFooter";
+import { AboutHeader } from "@/components/portfolio/root/AboutHeader";
+import { StickyNav } from "@/components/portfolio/root/StickyNav";
+import { ExperienceSection } from "@/components/portfolio/root/ExperienceSection";
+import { ProjectsSection } from "@/components/portfolio/root/ProjectsSection";
+import { StackSection } from "@/components/portfolio/root/StackSection";
+import { GithubSection } from "@/components/portfolio/root/GithubSection";
+import { AwardsSection } from "@/components/portfolio/root/AwardsSection";
+import { PublicationsSection } from "@/components/portfolio/root/PublicationsSection";
+import { CertificationsSection } from "@/components/portfolio/root/CertificationsSection";
+import { SectionDivider } from "@/components/portfolio/root/SectionDivider";
+import { SiteFooter } from "@/components/portfolio/root/SiteFooter";
 
 export default function Home() {
   return (

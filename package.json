@@ -1,8 +1,8 @@
 {
-  "name": "portfolio-zickrian",
+  "name": "portfolio-fidel",
   "version": "1.0.0",
   "private": true,
-  "description": "Personal Portfolio - Firdaus Khotibul Zickrian",
+  "description": "Personal Portfolio - Fidel Cristopher",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
