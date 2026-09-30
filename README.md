@@ -43,6 +43,11 @@ npm run build
 npm run start
 ```
 
+## 🙏 Acknowledgements
+
+- Design inspired by [zickrian.dev](https://www.zickrian.dev)
+- Built with [Next.js](https://nextjs.org) and [Tailwind CSS](https://tailwindcss.com)
+
 ## 📄 License
 
 This project is licensed under the MIT License.
