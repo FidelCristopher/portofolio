@@ -28,7 +28,7 @@ export default function Home() {
             <SectionDivider />
             <GithubSection />
             <SectionDivider />
-            <CodeforcesSection />
+            <CodeforcesSection showSolvedList={false} />
             <SectionDivider />
             <AwardsSection />
             <SectionDivider />

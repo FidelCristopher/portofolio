@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useMemo } from "react";
+import Link from "next/link";
 
 interface Submission {
   id: number;
@@ -29,9 +30,8 @@ interface SolvedProblem {
   url: string;
 }
 
-export function CodeforcesSection() {
+export function CodeforcesSection({ showSolvedList = true }: { showSolvedList?: boolean }) {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
-  const [loading, setLoading] = useState(true);
 
   // Fallback initial solved problems for FidelCristopher
   const initialSolved: SolvedProblem[] = [
@@ -101,8 +101,6 @@ export function CodeforcesSection() {
         }
       } catch (err) {
         console.warn("Using initial Codeforces data:", err);
-      } finally {
-        if (isMounted) setLoading(false);
       }
     }
     fetchCodeforces();
@@ -289,18 +287,28 @@ export function CodeforcesSection() {
           </svg>
         </div>
 
-        {/* Legend */}
+        {/* Legend & Navigation Link */}
         <div className="flex flex-wrap items-center justify-between gap-4 px-4 leading-none text-xs text-muted-foreground">
-          <div>
-            Submissions dynamically synced from{" "}
-            <a
-              href="https://codeforces.com/profile/FidelCristopher"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground hover:underline font-medium"
-            >
-              Codeforces API
-            </a>.
+          <div className="flex items-center gap-2">
+            <span>
+              Submissions synced from{" "}
+              <a
+                href="https://codeforces.com/profile/FidelCristopher"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground hover:underline font-medium"
+              >
+                Codeforces API
+              </a>.
+            </span>
+            {!showSolvedList && (
+              <Link
+                href="/contributions#codeforces"
+                className="text-emerald-400 hover:underline font-medium ml-1"
+              >
+                View solved problems →
+              </Link>
+            )}
           </div>
           <div className="flex items-center gap-1" aria-hidden="true">
             <span className="mr-1">Less</span>
@@ -314,68 +322,70 @@ export function CodeforcesSection() {
         </div>
       </div>
 
-      {/* Solved Problems List */}
-      <div className="border-t border-line p-4">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
-              Solved Problems (Accepted)
-            </h3>
-            <span className="font-mono text-xs text-muted-foreground">
-              ({solvedList.length} problems)
-            </span>
-          </div>
-          <a
-            href="https://codeforces.com/submissions/FidelCristopher"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
-          >
-            All Submissions →
-          </a>
-        </div>
-
-        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-          {solvedList.map((prob) => (
+      {/* Solved Problems List (Only shown when showSolvedList is true) */}
+      {showSolvedList && (
+        <div className="border-t border-line p-4">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
+                Solved Problems (Accepted)
+              </h3>
+              <span className="font-mono text-xs text-muted-foreground">
+                ({solvedList.length} problems)
+              </span>
+            </div>
             <a
-              key={prob.id}
-              href={prob.url}
+              href="https://codeforces.com/submissions/FidelCristopher"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col justify-between rounded-lg border border-line bg-muted/20 p-3 transition-colors hover:border-foreground/30 hover:bg-muted/50"
+              className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
             >
-              <div>
-                <div className="flex items-start justify-between gap-2 mb-1">
-                  <div className="flex items-center gap-1.5 min-w-0">
-                    <span className="inline-flex items-center justify-center size-5 rounded-full bg-emerald-500/15 text-emerald-400 shrink-0 text-xs">
-                      ✓
-                    </span>
-                    <h4 className="font-medium text-sm text-foreground truncate group-hover:underline">
-                      {prob.id}. {prob.name}
-                    </h4>
-                  </div>
-                  {prob.rating && (
-                    <span className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground border border-border shrink-0">
-                      ★ {prob.rating}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-between gap-1 pt-2 mt-1 border-t border-line/50 text-[11px] font-mono text-muted-foreground">
-                <div className="flex flex-wrap items-center gap-1">
-                  {prob.tags.slice(0, 2).map((t) => (
-                    <span key={t} className="capitalize">
-                      #{t}
-                    </span>
-                  ))}
-                </div>
-                <span>{prob.solvedTime}</span>
-              </div>
+              All Submissions →
             </a>
-          ))}
+          </div>
+
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+            {solvedList.map((prob) => (
+              <a
+                key={prob.id}
+                href={prob.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between rounded-lg border border-line bg-muted/20 p-3 transition-colors hover:border-foreground/30 hover:bg-muted/50"
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-2 mb-1">
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <span className="inline-flex items-center justify-center size-5 rounded-full bg-emerald-500/15 text-emerald-400 shrink-0 text-xs font-bold">
+                        ✓
+                      </span>
+                      <h4 className="font-medium text-sm text-foreground truncate group-hover:underline">
+                        {prob.id}. {prob.name}
+                      </h4>
+                    </div>
+                    {prob.rating && (
+                      <span className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground border border-border shrink-0">
+                        ★ {prob.rating}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-1 pt-2 mt-1 border-t border-line/50 text-[11px] font-mono text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-1">
+                    {prob.tags.slice(0, 2).map((t) => (
+                      <span key={t} className="capitalize">
+                        #{t}
+                      </span>
+                    ))}
+                  </div>
+                  <span>{prob.solvedTime}</span>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
