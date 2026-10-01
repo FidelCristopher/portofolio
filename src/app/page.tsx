@@ -4,6 +4,7 @@ import { EducationSection } from "@/components/portfolio/root/EducationSection";
 import { ProjectsSection } from "@/components/portfolio/root/ProjectsSection";
 import { StackSection } from "@/components/portfolio/root/StackSection";
 import { GithubSection } from "@/components/portfolio/root/GithubSection";
+import { CodeforcesSection } from "@/components/portfolio/root/CodeforcesSection";
 import { AwardsSection } from "@/components/portfolio/root/AwardsSection";
 import { PublicationsSection } from "@/components/portfolio/root/PublicationsSection";
 import { CertificationsSection } from "@/components/portfolio/root/CertificationsSection";
@@ -26,6 +27,8 @@ export default function Home() {
             <StackSection />
             <SectionDivider />
             <GithubSection />
+            <SectionDivider />
+            <CodeforcesSection />
             <SectionDivider />
             <AwardsSection />
             <SectionDivider />
