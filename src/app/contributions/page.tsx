@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { AboutHeader } from "@/components/portfolio/root/AboutHeader";
 import { StickyNav } from "@/components/portfolio/root/StickyNav";
 import { AllContributionsView } from "@/components/portfolio/root/AllContributionsView";
+import { CodeforcesSection } from "@/components/portfolio/root/CodeforcesSection";
 import { SectionDivider } from "@/components/portfolio/root/SectionDivider";
 import { SiteFooter } from "@/components/portfolio/root/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "GitHub Contributions & Open Source | Fidel Cristopher",
-  description: "Open-source work, commit activity, and repository contributions by Fidel Cristopher.",
+  title: "Contributions & Problem Solving | Fidel Cristopher",
+  description: "GitHub open-source contributions and Codeforces competitive programming activity by Fidel Cristopher.",
 };
 
 export default function ContributionsPage() {
@@ -20,6 +21,8 @@ export default function ContributionsPage() {
           <div id="main" tabIndex={-1} className="outline-none">
             <SectionDivider />
             <AllContributionsView />
+            <SectionDivider />
+            <CodeforcesSection />
             <SectionDivider />
           </div>
         </div>

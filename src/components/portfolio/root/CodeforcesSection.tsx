@@ -4,20 +4,83 @@ import React, { useEffect, useState, useMemo } from "react";
 
 interface Submission {
   id: number;
+  contestId?: number;
   creationTimeSeconds: number;
   verdict: string;
+  programmingLanguage: string;
   problem: {
     contestId?: number;
     index?: string;
     name?: string;
+    rating?: number;
+    tags?: string[];
   };
+}
+
+interface SolvedProblem {
+  id: string;
+  contestId: number;
+  index: string;
+  name: string;
+  rating?: number;
+  tags: string[];
+  programmingLanguage: string;
+  solvedTime: string;
+  url: string;
 }
 
 export function CodeforcesSection() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Fallback initial dates for FidelCristopher
+  // Fallback initial solved problems for FidelCristopher
+  const initialSolved: SolvedProblem[] = [
+    {
+      id: "282A",
+      contestId: 282,
+      index: "A",
+      name: "Bit++",
+      rating: 800,
+      tags: ["implementation"],
+      programmingLanguage: "C++23",
+      solvedTime: "2026-09-22",
+      url: "https://codeforces.com/problemset/problem/282/A"
+    },
+    {
+      id: "231A",
+      contestId: 231,
+      index: "A",
+      name: "Team",
+      rating: 800,
+      tags: ["brute force", "greedy"],
+      programmingLanguage: "C++23",
+      solvedTime: "2026-09-21",
+      url: "https://codeforces.com/problemset/problem/231/A"
+    },
+    {
+      id: "71A",
+      contestId: 71,
+      index: "A",
+      name: "Way Too Long Words",
+      rating: 800,
+      tags: ["strings"],
+      programmingLanguage: "C++23",
+      solvedTime: "2026-09-16",
+      url: "https://codeforces.com/problemset/problem/71/A"
+    },
+    {
+      id: "4A",
+      contestId: 4,
+      index: "A",
+      name: "Watermelon",
+      rating: 800,
+      tags: ["brute force", "math"],
+      programmingLanguage: "C++20",
+      solvedTime: "2026-09-09",
+      url: "https://codeforces.com/problemset/problem/4/A"
+    }
+  ];
+
   const initialDates: Record<string, number> = {
     "2026-09-09": 8,
     "2026-09-16": 5,
@@ -30,14 +93,14 @@ export function CodeforcesSection() {
     let isMounted = true;
     async function fetchCodeforces() {
       try {
-        const res = await fetch("https://codeforces.com/api/user.status?handle=FidelCristopher&from=1&count=500");
+        const res = await fetch("https://codeforces.com/api/user.status?handle=FidelCristopher&from=1&count=1000");
         if (!res.ok) throw new Error("Network error");
         const data = await res.json();
         if (data.status === "OK" && isMounted) {
           setSubmissions(data.result || []);
         }
       } catch (err) {
-        console.warn("Using cached Codeforces data:", err);
+        console.warn("Using initial Codeforces data:", err);
       } finally {
         if (isMounted) setLoading(false);
       }
@@ -48,37 +111,49 @@ export function CodeforcesSection() {
     };
   }, []);
 
-  // Compute stats
-  const { dateMap, totalSubmissions, uniqueSolved, activeDays } = useMemo(() => {
-    const map: Record<string, number> = { ...initialDates };
-    const solvedSet = new Set<string>();
-    let total = 17;
-
-    if (submissions.length > 0) {
-      total = submissions.length;
-      // reset map for live data
-      for (const k in map) delete map[k];
-
-      submissions.forEach((sub) => {
-        const d = new Date(sub.creationTimeSeconds * 1000);
-        const key = d.toISOString().split("T")[0];
-        map[key] = (map[key] || 0) + 1;
-
-        if (sub.verdict === "OK" && sub.problem.contestId && sub.problem.index) {
-          solvedSet.add(`${sub.problem.contestId}-${sub.problem.index}`);
-        }
-      });
-    } else {
-      solvedSet.add("158-A");
-      solvedSet.add("282-A");
-      solvedSet.add("71-A");
-      solvedSet.add("4-A");
+  // Compute stats and solved problems list
+  const { dateMap, totalSubmissions, solvedList, activeDays } = useMemo(() => {
+    if (submissions.length === 0) {
+      return {
+        dateMap: initialDates,
+        totalSubmissions: 17,
+        solvedList: initialSolved,
+        activeDays: Object.keys(initialDates).length
+      };
     }
+
+    const map: Record<string, number> = {};
+    const solved: SolvedProblem[] = [];
+    const seen = new Set<string>();
+
+    submissions.forEach((sub) => {
+      const d = new Date(sub.creationTimeSeconds * 1000);
+      const key = d.toISOString().split("T")[0];
+      map[key] = (map[key] || 0) + 1;
+
+      if (sub.verdict === "OK" && sub.problem.contestId && sub.problem.index) {
+        const pKey = `${sub.problem.contestId}${sub.problem.index}`;
+        if (!seen.has(pKey)) {
+          seen.add(pKey);
+          solved.push({
+            id: pKey,
+            contestId: sub.problem.contestId,
+            index: sub.problem.index,
+            name: sub.problem.name || pKey,
+            rating: sub.problem.rating,
+            tags: sub.problem.tags || [],
+            programmingLanguage: sub.programmingLanguage.split(" ")[0],
+            solvedTime: key,
+            url: `https://codeforces.com/problemset/problem/${sub.problem.contestId}/${sub.problem.index}`
+          });
+        }
+      }
+    });
 
     return {
       dateMap: map,
-      totalSubmissions: total,
-      uniqueSolved: solvedSet.size,
+      totalSubmissions: submissions.length,
+      solvedList: solved.length > 0 ? solved : initialSolved,
       activeDays: Object.keys(map).length
     };
   }, [submissions]);
@@ -86,7 +161,6 @@ export function CodeforcesSection() {
   // Generate 52 weeks (364 days) leading up to today
   const calendarWeeks = useMemo(() => {
     const today = new Date();
-    // find end of current week (Saturday)
     const end = new Date(today);
     end.setDate(today.getDate() + (6 - today.getDay()));
 
@@ -157,7 +231,7 @@ export function CodeforcesSection() {
         </div>
         <div className="flex flex-col gap-1 bg-background p-3.5">
           <span className="text-xs text-muted-foreground">Problems Solved (AC)</span>
-          <span className="font-mono text-xl font-bold tracking-tight text-emerald-400">{uniqueSolved}</span>
+          <span className="font-mono text-xl font-bold tracking-tight text-emerald-400">{solvedList.length}</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-3.5">
           <span className="text-xs text-muted-foreground">Active Days</span>
@@ -215,7 +289,7 @@ export function CodeforcesSection() {
           </svg>
         </div>
 
-        {/* Legend & Summary */}
+        {/* Legend */}
         <div className="flex flex-wrap items-center justify-between gap-4 px-4 leading-none text-xs text-muted-foreground">
           <div>
             Submissions dynamically synced from{" "}
@@ -237,6 +311,69 @@ export function CodeforcesSection() {
             <span className="size-2.5 rounded-xs bg-[#39d353]" />
             <span className="ml-1">More</span>
           </div>
+        </div>
+      </div>
+
+      {/* Solved Problems List */}
+      <div className="border-t border-line p-4">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
+              Solved Problems (Accepted)
+            </h3>
+            <span className="font-mono text-xs text-muted-foreground">
+              ({solvedList.length} problems)
+            </span>
+          </div>
+          <a
+            href="https://codeforces.com/submissions/FidelCristopher"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
+          >
+            All Submissions →
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+          {solvedList.map((prob) => (
+            <a
+              key={prob.id}
+              href={prob.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col justify-between rounded-lg border border-line bg-muted/20 p-3 transition-colors hover:border-foreground/30 hover:bg-muted/50"
+            >
+              <div>
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <span className="inline-flex items-center justify-center size-5 rounded-full bg-emerald-500/15 text-emerald-400 shrink-0 text-xs">
+                      ✓
+                    </span>
+                    <h4 className="font-medium text-sm text-foreground truncate group-hover:underline">
+                      {prob.id}. {prob.name}
+                    </h4>
+                  </div>
+                  {prob.rating && (
+                    <span className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground border border-border shrink-0">
+                      ★ {prob.rating}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-between gap-1 pt-2 mt-1 border-t border-line/50 text-[11px] font-mono text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-1">
+                  {prob.tags.slice(0, 2).map((t) => (
+                    <span key={t} className="capitalize">
+                      #{t}
+                    </span>
+                  ))}
+                </div>
+                <span>{prob.solvedTime}</span>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
