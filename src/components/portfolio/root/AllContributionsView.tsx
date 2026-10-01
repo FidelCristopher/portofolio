@@ -98,7 +98,7 @@ export function AllContributionsView() {
       <div className="grid grid-cols-2 gap-px border-y border-line bg-line sm:grid-cols-4">
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Year Contributions</span>
-          <span className="font-mono text-2xl font-bold tracking-tight text-foreground">73</span>
+          <span className="font-mono text-2xl font-bold tracking-tight text-foreground">92+</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Public Repos</span>
