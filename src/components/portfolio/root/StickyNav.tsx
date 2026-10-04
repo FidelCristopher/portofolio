@@ -45,7 +45,7 @@ export function StickyNav({ activeIndex = 0 }: { activeIndex?: number }) {
     {
       id: "learning",
       label: "My Learning",
-      href: "/#stack",
+      href: "/learning",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className="size-4 shrink-0 transition-transform duration-200 sm:size-4.5 group-hover:scale-105 group-hover:-translate-y-0.5">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" fill="currentColor" opacity="0.08"></path>
