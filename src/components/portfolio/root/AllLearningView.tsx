@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 
 interface SessionMeta {
   id: string;
+  category: "nlp" | "compbio";
   sessionNum: string;
   title: string;
   topic: string;
@@ -12,9 +13,10 @@ interface SessionMeta {
   tags: string[];
 }
 
-const defaultSessions: SessionMeta[] = [
+const defaultNlpSessions: SessionMeta[] = [
   {
-    id: "sesi-1",
+    id: "nlp-sesi-1",
+    category: "nlp",
     sessionNum: "01",
     title: "Text Tokenization & Stopwords Filtering",
     topic: "Text Preprocessing Foundations",
@@ -24,7 +26,8 @@ const defaultSessions: SessionMeta[] = [
     tags: ["NLP", "Tokenization", "NLTK", "Stopwords", "Text Cleaning", "Python"]
   },
   {
-    id: "sesi-2",
+    id: "nlp-sesi-2",
+    category: "nlp",
     sessionNum: "02",
     title: "Stemming & WordNet Lemmatization",
     topic: "Morphological Analysis",
@@ -34,7 +37,8 @@ const defaultSessions: SessionMeta[] = [
     tags: ["NLP", "Stemming", "Lemmatization", "WordNet", "Lancaster", "NLTK", "Python"]
   },
   {
-    id: "sesi-3",
+    id: "nlp-sesi-3",
+    category: "nlp",
     sessionNum: "03",
     title: "POS Tagging, Frequency Distribution & NER",
     topic: "Syntactic & Semantic Tagging",
@@ -44,7 +48,8 @@ const defaultSessions: SessionMeta[] = [
     tags: ["NLP", "POS Tagging", "NER", "FreqDist", "Chunking", "NLTK", "Syntax"]
   },
   {
-    id: "sesi-4",
+    id: "nlp-sesi-4",
+    category: "nlp",
     sessionNum: "04",
     title: "End-to-End NLP Preprocessing & Emotion Classifier",
     topic: "Pipeline & Model Serialization",
@@ -54,7 +59,8 @@ const defaultSessions: SessionMeta[] = [
     tags: ["NLP", "Text Classification", "Preprocessing Pipeline", "Emotion Analysis", "Scikit-Learn", "Pickle"]
   },
   {
-    id: "sesi-8",
+    id: "nlp-sesi-8",
+    category: "nlp",
     sessionNum: "08",
     title: "Language Modeling with N-Grams & Cosine Similarity",
     topic: "Vectorization & Document Distance",
@@ -64,7 +70,8 @@ const defaultSessions: SessionMeta[] = [
     tags: ["NLP", "N-Gram", "CountVectorizer", "Cosine Similarity", "Vector Space", "Language Modeling"]
   },
   {
-    id: "sesi-9",
+    id: "nlp-sesi-9",
+    category: "nlp",
     sessionNum: "09",
     title: "Dense Word Embeddings (Word2Vec & Pre-trained GloVe)",
     topic: "Vector Semantics & Word Math",
@@ -74,7 +81,8 @@ const defaultSessions: SessionMeta[] = [
     tags: ["NLP", "Word2Vec", "GloVe", "Word Embeddings", "Gensim", "Semantic Similarity", "Deep Learning"]
   },
   {
-    id: "sesi-11",
+    id: "nlp-sesi-11",
+    category: "nlp",
     sessionNum: "11",
     title: "Real-World Job Posting Text Classifier (UAP Capstone)",
     topic: "Comprehensive ML Project",
@@ -85,40 +93,93 @@ const defaultSessions: SessionMeta[] = [
   }
 ];
 
+const defaultCompBioSessions: SessionMeta[] = [
+  {
+    id: "compbio-sesi-1",
+    category: "compbio",
+    sessionNum: "01",
+    title: "DNA / RNA Sequence Fundamentals & Biopython Basics",
+    topic: "Molecular Sequence Representation",
+    githubUrl: "https://github.com/FidelCristopher/lab-compbio/tree/main/Sesi%201",
+    description:
+      "Core nucleotide sequence computing using Biopython Bio.Seq: DNA/RNA strand transcription, reverse complement calculation, protein translation, and codon sequence analysis for biological data modeling.",
+    tags: ["CompBio", "BioPython", "DNA Sequencing", "Genetics", "Bio.Seq", "Python"]
+  },
+  {
+    id: "compbio-sesi-2",
+    category: "compbio",
+    sessionNum: "02",
+    title: "GC-Content Fraction & DNA Melting Temperature (Tm)",
+    topic: "Thermodynamic & Molecular Stability",
+    githubUrl: "https://github.com/FidelCristopher/lab-compbio/tree/main/Sesi%202",
+    description:
+      "Evaluating nucleotide thermal stability by computing GC-content percentage, plotting nucleotide distributions with Matplotlib, and calculating DNA duplex melting temperature (Tm) using thermodynamic nearest-neighbor models.",
+    tags: ["CompBio", "Melting Temperature", "GC-Content", "Bio.SeqUtils", "Matplotlib", "BioPython"]
+  },
+  {
+    id: "compbio-sesi-4",
+    category: "compbio",
+    sessionNum: "04",
+    title: "Pairwise Sequence Alignment, Edit Distance & Dot Plot",
+    topic: "Global & Local Sequence Alignment",
+    githubUrl: "https://github.com/FidelCristopher/lab-compbio/tree/main/Sesi%204",
+    description:
+      "Implementing Needleman-Wunsch (Global) and Smith-Waterman (Local) alignment algorithms with pairwise2, calculating Hamming and Levenshtein edit distance between DNA strands, and visual Dot Plot homology analysis.",
+    tags: ["CompBio", "Sequence Alignment", "Pairwise2", "Levenshtein", "Hamming Distance", "Dot Plot"]
+  },
+  {
+    id: "compbio-sesi-5",
+    category: "compbio",
+    sessionNum: "05",
+    title: "GenBank Record Parsing & FASTA Format Processing",
+    topic: "Biological Database Parsing & File I/O",
+    githubUrl: "https://github.com/FidelCristopher/lab-compbio/tree/main/Sesi%205",
+    description:
+      "Manipulating biological database records using Bio.SeqIO: parsing complex GenBank (.gb) genome annotations, extracting feature metadata, filtering FASTA (.fasta) records, and preparing TM1 practical examination criteria.",
+    tags: ["CompBio", "GenBank", "FASTA", "SeqIO", "Genomics", "Bioinformatics", "Python"]
+  }
+];
+
 export function AllLearningView() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [sessions, setSessions] = useState<SessionMeta[]>(defaultSessions);
-  const [isLive, setIsLive] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<"all" | "nlp" | "compbio">("all");
+  const [nlpList, setNlpList] = useState<SessionMeta[]>(defaultNlpSessions);
+  const [compBioList, setCompBioList] = useState<SessionMeta[]>(defaultCompBioSessions);
 
   useEffect(() => {
     let isMounted = true;
-    async function syncRepo() {
+    async function syncRepos() {
       try {
         const res = await fetch("/api/learning");
         if (!res.ok) return;
         const data = await res.json();
-        if (data.sessions && Array.isArray(data.sessions) && isMounted) {
-          setSessions(data.sessions);
-          if (data.source === "live") {
-            setIsLive(true);
-          }
-        }
+        if (data.nlpSessions && isMounted) setNlpList(data.nlpSessions);
+        if (data.compBioSessions && isMounted) setCompBioList(data.compBioSessions);
       } catch (err) {
-        // silent fallback to default curated sessions
+        // silent fallback
       }
     }
-    syncRepo();
+    syncRepos();
     return () => {
       isMounted = false;
     };
   }, []);
 
-  // Filter based on searchQuery
-  const filteredSessions = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
-    if (!q) return sessions;
+  const allSessions = useMemo(() => {
+    return [...nlpList, ...compBioList];
+  }, [nlpList, compBioList]);
 
-    return sessions.filter((s) => {
+  // Filter based on search and category
+  const filteredSessions = useMemo(() => {
+    let list = allSessions;
+    if (activeCategory !== "all") {
+      list = list.filter((s) => s.category === activeCategory);
+    }
+
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return list;
+
+    return list.filter((s) => {
       const titleMatch = s.title.toLowerCase().includes(q);
       const sessionMatch = s.sessionNum.toLowerCase().includes(q);
       const topicMatch = s.topic.toLowerCase().includes(q);
@@ -126,7 +187,7 @@ export function AllLearningView() {
       const descMatch = s.description.toLowerCase().includes(q);
       return titleMatch || sessionMatch || topicMatch || tagMatch || descMatch;
     });
-  }, [searchQuery, sessions]);
+  }, [searchQuery, activeCategory, allSessions]);
 
   return (
     <div className="relative z-1 -mt-px border-x border-t border-line bg-card max-md:border-x-0">
@@ -136,26 +197,31 @@ export function AllLearningView() {
           <div>
             <div className="flex items-center gap-2">
               <h2 data-slot="panel-title" className="font-handwritten text-3xl font-semibold tracking-tight">
-                Natural Language Processing Lab
+                My Learning &amp; Coursework Hub
               </h2>
               <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-mono text-emerald-400 select-none">
                 <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Auto-Synced
+                Live GitHub Sync
               </span>
             </div>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Live coursework &amp; notebook modules from{" "}
+              Hands-on lab modules automatically synced from{" "}
               <a
                 href="https://github.com/FidelCristopher/lab-nlp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground underline hover:text-emerald-400 font-mono inline-flex items-center gap-1"
+                className="text-foreground underline hover:text-emerald-400 font-mono"
               >
-                FidelCristopher/lab-nlp
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right">
-                  <path d="M7 7h10v10"></path>
-                  <path d="M7 17 17 7"></path>
-                </svg>
+                lab-nlp
+              </a>{" "}
+              &amp;{" "}
+              <a
+                href="https://github.com/FidelCristopher/lab-compbio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline hover:text-emerald-400 font-mono"
+              >
+                lab-compbio
               </a>
             </p>
           </div>
@@ -168,24 +234,24 @@ export function AllLearningView() {
       {/* Summary Stats Grid */}
       <div className="grid grid-cols-2 gap-px border-b border-line bg-line sm:grid-cols-4">
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Subject</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">NLP &amp; Text Mining</span>
+          <span className="text-xs text-muted-foreground">Core Domains</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">NLP &amp; CompBio</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Completed Sessions</span>
-          <span className="font-mono text-base font-bold tracking-tight text-emerald-400">{sessions.length} Core Modules</span>
+          <span className="text-xs text-muted-foreground">Completed Modules</span>
+          <span className="font-mono text-base font-bold tracking-tight text-emerald-400">{allSessions.length} Sessions</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Primary Libraries</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">NLTK, Gensim, Sklearn</span>
+          <span className="text-xs text-muted-foreground">Core Toolkits</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">Biopython, NLTK, Gensim</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Sync Status</span>
-          <span className="font-mono text-base font-bold tracking-tight text-emerald-400">Up to Date</span>
+          <span className="text-xs text-muted-foreground">Repositories</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">2 Repos (Public)</span>
         </div>
       </div>
 
-      {/* Search Bar Section */}
+      {/* Search Bar & Category Filter Section */}
       <div className="border-b border-line p-4 bg-muted/20">
         <div className="relative flex items-center">
           <div className="pointer-events-none absolute left-3 flex items-center justify-center text-muted-foreground">
@@ -209,7 +275,7 @@ export function AllLearningView() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search session by topic, algorithm, or tag (e.g. Word2Vec, GloVe, POS Tagging, NLTK)..."
+            placeholder="Search topic or tag (e.g. BioPython, DNA, Word2Vec, GloVe, Alignment, NLTK)..."
             className="w-full rounded-lg border border-line bg-background py-2.5 pl-10 pr-9 text-sm text-foreground placeholder:text-muted-foreground/60 transition-all outline-none focus:border-foreground/30 focus:ring-2 focus:ring-foreground/10"
           />
           {searchQuery && (
@@ -224,23 +290,60 @@ export function AllLearningView() {
           )}
         </div>
 
-        {/* Quick Suggestion Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 pt-2.5 text-xs text-muted-foreground">
-          <span className="font-mono text-[11px] mr-1">Filter Tag:</span>
-          {["NLP", "Tokenization", "Stemming", "POS Tagging", "Word2Vec", "GloVe", "N-Gram", "Classification"].map((suggest) => (
+        {/* Category Tabs & Quick Suggestion Pills */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-3">
+          <div className="flex items-center gap-1.5">
             <button
-              key={suggest}
               type="button"
-              onClick={() => setSearchQuery(suggest)}
-              className={`rounded-md border px-2 py-0.5 font-mono text-[11px] transition-colors ${
-                searchQuery.toLowerCase() === suggest.toLowerCase()
-                  ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
-                  : "border-border bg-background text-muted-foreground hover:border-foreground/30 hover:text-foreground"
+              onClick={() => setActiveCategory("all")}
+              className={`rounded-md px-2.5 py-1 text-xs font-mono transition-colors ${
+                activeCategory === "all"
+                  ? "bg-foreground text-background font-semibold"
+                  : "border border-border bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
-              #{suggest}
+              All Modules ({allSessions.length})
             </button>
-          ))}
+            <button
+              type="button"
+              onClick={() => setActiveCategory("nlp")}
+              className={`rounded-md px-2.5 py-1 text-xs font-mono transition-colors ${
+                activeCategory === "nlp"
+                  ? "bg-emerald-500 text-black font-semibold"
+                  : "border border-border bg-background text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              NLP Lab ({nlpList.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("compbio")}
+              className={`rounded-md px-2.5 py-1 text-xs font-mono transition-colors ${
+                activeCategory === "compbio"
+                  ? "bg-sky-500 text-black font-semibold"
+                  : "border border-border bg-background text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              CompBio Lab ({compBioList.length})
+            </button>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
+            {["BioPython", "DNA Sequencing", "Word2Vec", "GloVe", "Alignment", "GenBank", "POS Tagging"].map((suggest) => (
+              <button
+                key={suggest}
+                type="button"
+                onClick={() => setSearchQuery(suggest)}
+                className={`rounded-md border px-1.5 py-0.5 font-mono text-[10px] transition-colors ${
+                  searchQuery.toLowerCase() === suggest.toLowerCase()
+                    ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
+                    : "border-border bg-background text-muted-foreground hover:border-foreground/30 hover:text-foreground"
+                }`}
+              >
+                #{suggest}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -249,14 +352,18 @@ export function AllLearningView() {
         <div className="flex items-center justify-between mb-3">
           <div>
             <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
-              Lab Sessions &amp; Notebooks
+              {activeCategory === "all"
+                ? "Coursework Modules & Lab Code"
+                : activeCategory === "nlp"
+                ? "Natural Language Processing (lab-nlp)"
+                : "Computational Biology (lab-compbio)"}
             </h3>
             <p className="text-xs text-muted-foreground mt-0.5">
               Click any card to inspect the corresponding Jupyter notebook and source code on GitHub.
             </p>
           </div>
           <span className="font-mono text-xs text-muted-foreground shrink-0">
-            {filteredSessions.length} of {sessions.length} sessions
+            {filteredSessions.length} of {allSessions.length} modules
           </span>
         </div>
 
@@ -274,9 +381,9 @@ export function AllLearningView() {
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-muted text-muted-foreground border border-border font-semibold">
-                        {session.sessionNum.replace(/session\s*/i, "")}
+                        {session.sessionNum}
                       </span>
-                      <span className="text-[11px] font-mono text-emerald-400/90">
+                      <span className={`text-[11px] font-mono ${session.category === "compbio" ? "text-sky-400/90" : "text-emerald-400/90"}`}>
                         {session.topic}
                       </span>
                     </div>
@@ -334,11 +441,14 @@ export function AllLearningView() {
               No sessions found matching &quot;{searchQuery}&quot;
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Try searching for &quot;Word2Vec&quot;, &quot;GloVe&quot;, &quot;POS Tagging&quot;, or &quot;Tokenization&quot;.
+              Try searching for &quot;BioPython&quot;, &quot;DNA&quot;, &quot;Word2Vec&quot;, &quot;GloVe&quot;, or &quot;Alignment&quot;.
             </p>
             <button
               type="button"
-              onClick={() => setSearchQuery("")}
+              onClick={() => {
+                setSearchQuery("");
+                setActiveCategory("all");
+              }}
               className="mt-3 text-xs font-mono text-emerald-400 underline hover:text-emerald-300"
             >
               Reset search

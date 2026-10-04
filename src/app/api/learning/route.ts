@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 
-interface SessionMeta {
+export interface SessionMeta {
   id: string;
+  category: "nlp" | "compbio";
   sessionNum: string;
   title: string;
   topic: string;
@@ -10,10 +11,11 @@ interface SessionMeta {
   tags: string[];
 }
 
-// Built-in curated knowledge base for existing lab sessions
-const defaultSessions: Record<string, SessionMeta> = {
+// Curated knowledge base for NLP lab sessions
+const defaultNlpSessions: Record<string, SessionMeta> = {
   "Sesi 1": {
-    id: "sesi-1",
+    id: "nlp-sesi-1",
+    category: "nlp",
     sessionNum: "01",
     title: "Text Tokenization & Stopwords Filtering",
     topic: "Text Preprocessing Foundations",
@@ -23,7 +25,8 @@ const defaultSessions: Record<string, SessionMeta> = {
     tags: ["NLP", "Tokenization", "NLTK", "Stopwords", "Text Cleaning", "Python"]
   },
   "Sesi 2": {
-    id: "sesi-2",
+    id: "nlp-sesi-2",
+    category: "nlp",
     sessionNum: "02",
     title: "Stemming & WordNet Lemmatization",
     topic: "Morphological Analysis",
@@ -33,7 +36,8 @@ const defaultSessions: Record<string, SessionMeta> = {
     tags: ["NLP", "Stemming", "Lemmatization", "WordNet", "Lancaster", "NLTK", "Python"]
   },
   "Sesi 3": {
-    id: "sesi-3",
+    id: "nlp-sesi-3",
+    category: "nlp",
     sessionNum: "03",
     title: "POS Tagging, Frequency Distribution & NER",
     topic: "Syntactic & Semantic Tagging",
@@ -43,7 +47,8 @@ const defaultSessions: Record<string, SessionMeta> = {
     tags: ["NLP", "POS Tagging", "NER", "FreqDist", "Chunking", "NLTK", "Syntax"]
   },
   "Sesi 4": {
-    id: "sesi-4",
+    id: "nlp-sesi-4",
+    category: "nlp",
     sessionNum: "04",
     title: "End-to-End NLP Preprocessing & Emotion Classifier",
     topic: "Pipeline & Model Serialization",
@@ -53,7 +58,8 @@ const defaultSessions: Record<string, SessionMeta> = {
     tags: ["NLP", "Text Classification", "Preprocessing Pipeline", "Emotion Analysis", "Scikit-Learn", "Pickle"]
   },
   "Sesi 8": {
-    id: "sesi-8",
+    id: "nlp-sesi-8",
+    category: "nlp",
     sessionNum: "08",
     title: "Language Modeling with N-Grams & Cosine Similarity",
     topic: "Vectorization & Document Distance",
@@ -63,7 +69,8 @@ const defaultSessions: Record<string, SessionMeta> = {
     tags: ["NLP", "N-Gram", "CountVectorizer", "Cosine Similarity", "Vector Space", "Language Modeling"]
   },
   "Sesi 9": {
-    id: "sesi-9",
+    id: "nlp-sesi-9",
+    category: "nlp",
     sessionNum: "09",
     title: "Dense Word Embeddings (Word2Vec & Pre-trained GloVe)",
     topic: "Vector Semantics & Word Math",
@@ -73,7 +80,8 @@ const defaultSessions: Record<string, SessionMeta> = {
     tags: ["NLP", "Word2Vec", "GloVe", "Word Embeddings", "Gensim", "Semantic Similarity", "Deep Learning"]
   },
   "Sesi 11": {
-    id: "sesi-11",
+    id: "nlp-sesi-11",
+    category: "nlp",
     sessionNum: "11",
     title: "Real-World Job Posting Text Classifier (UAP Capstone)",
     topic: "Comprehensive ML Project",
@@ -84,7 +92,59 @@ const defaultSessions: Record<string, SessionMeta> = {
   }
 };
 
-export async function GET() {
+// Curated knowledge base for Computational Biology lab sessions
+const defaultCompBioSessions: Record<string, SessionMeta> = {
+  "Sesi 1": {
+    id: "compbio-sesi-1",
+    category: "compbio",
+    sessionNum: "01",
+    title: "DNA / RNA Sequence Fundamentals & Biopython Basics",
+    topic: "Molecular Sequence Representation",
+    githubUrl: "https://github.com/FidelCristopher/lab-compbio/tree/main/Sesi%201",
+    description:
+      "Core nucleotide sequence computing using Biopython Bio.Seq: DNA/RNA strand transcription, reverse complement calculation, protein translation, and codon sequence analysis for biological data modeling.",
+    tags: ["CompBio", "BioPython", "DNA Sequencing", "Genetics", "Bio.Seq", "Python"]
+  },
+  "Sesi 2": {
+    id: "compbio-sesi-2",
+    category: "compbio",
+    sessionNum: "02",
+    title: "GC-Content Fraction & DNA Melting Temperature (Tm)",
+    topic: "Thermodynamic & Molecular Stability",
+    githubUrl: "https://github.com/FidelCristopher/lab-compbio/tree/main/Sesi%202",
+    description:
+      "Evaluating nucleotide thermal stability by computing GC-content percentage, plotting nucleotide distributions with Matplotlib, and calculating DNA duplex melting temperature (Tm) using thermodynamic nearest-neighbor models.",
+    tags: ["CompBio", "Melting Temperature", "GC-Content", "Bio.SeqUtils", "Matplotlib", "BioPython"]
+  },
+  "Sesi 4": {
+    id: "compbio-sesi-4",
+    category: "compbio",
+    sessionNum: "04",
+    title: "Pairwise Sequence Alignment, Edit Distance & Dot Plot",
+    topic: "Global & Local Sequence Alignment",
+    githubUrl: "https://github.com/FidelCristopher/lab-compbio/tree/main/Sesi%204",
+    description:
+      "Implementing Needleman-Wunsch (Global) and Smith-Waterman (Local) alignment algorithms with pairwise2, calculating Hamming and Levenshtein edit distance between DNA strands, and visual Dot Plot homology analysis.",
+    tags: ["CompBio", "Sequence Alignment", "Pairwise2", "Levenshtein", "Hamming Distance", "Dot Plot"]
+  },
+  "Sesi 5": {
+    id: "compbio-sesi-5",
+    category: "compbio",
+    sessionNum: "05",
+    title: "GenBank Record Parsing & FASTA Format Processing",
+    topic: "Biological Database Parsing & File I/O",
+    githubUrl: "https://github.com/FidelCristopher/lab-compbio/tree/main/Sesi%205",
+    description:
+      "Manipulating biological database records using Bio.SeqIO: parsing complex GenBank (.gb) genome annotations, extracting feature metadata, filtering FASTA (.fasta) records, and preparing TM1 practical examination criteria.",
+    tags: ["CompBio", "GenBank", "FASTA", "SeqIO", "Genomics", "Bioinformatics", "Python"]
+  }
+};
+
+async function fetchRepoSessions(
+  repoName: string,
+  category: "nlp" | "compbio",
+  curatedMap: Record<string, SessionMeta>
+): Promise<SessionMeta[]> {
   try {
     const headers: Record<string, string> = {
       Accept: "application/vnd.github.v3+json",
@@ -95,67 +155,63 @@ export async function GET() {
       headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
     }
 
-    const res = await fetch("https://api.github.com/repos/FidelCristopher/lab-nlp/contents", {
+    const res = await fetch(`https://api.github.com/repos/FidelCristopher/${repoName}/contents`, {
       headers,
-      next: { revalidate: 300 } // revalidate every 5 minutes
+      next: { revalidate: 300 }
     });
 
-    if (!res.ok) {
-      // Fallback gracefully to default curated sessions if private or rate limited
-      return NextResponse.json({
-        source: "fallback",
-        sessions: Object.values(defaultSessions)
-      });
-    }
+    if (!res.ok) return Object.values(curatedMap);
 
     const items = await res.json();
-    if (!Array.isArray(items)) {
-      return NextResponse.json({
-        source: "fallback",
-        sessions: Object.values(defaultSessions)
-      });
-    }
+    if (!Array.isArray(items)) return Object.values(curatedMap);
 
-    // Filter directory sessions
-    const dirItems = items.filter((item) => item.type === "dir" && (item.name.toLowerCase().includes("sesi") || item.name.toLowerCase().includes("session")));
+    const dirItems = items.filter(
+      (item) => item.type === "dir" && (item.name.toLowerCase().includes("sesi") || item.name.toLowerCase().includes("session"))
+    );
 
-    const mergedSessions: SessionMeta[] = dirItems.map((dir) => {
-      // If we already have curated data for this session name
-      if (defaultSessions[dir.name]) {
-        return defaultSessions[dir.name];
+    const sessions: SessionMeta[] = dirItems.map((dir) => {
+      if (curatedMap[dir.name]) {
+        return curatedMap[dir.name];
       }
 
-      // Automatically generate a new card for any newly pushed session!
       const numMatch = dir.name.match(/\d+/);
       const numFormatted = numMatch ? numMatch[0].padStart(2, "0") : dir.name;
       const cleanTitle = dir.name.replace(/[-_]/g, " ");
 
       return {
-        id: dir.name.toLowerCase().replace(/[\s_]+/g, "-"),
+        id: `${category}-${dir.name.toLowerCase().replace(/[\s_]+/g, "-")}`,
+        category,
         sessionNum: `${numFormatted}`,
         title: `${cleanTitle} Module`,
-        topic: "NLP Advanced Module",
-        githubUrl: dir.html_url || `https://github.com/FidelCristopher/lab-nlp/tree/main/${encodeURIComponent(dir.name)}`,
-        description: `Practical implementation and code experiments for ${dir.name}. Newly synchronized from repository FidelCristopher/lab-nlp.`,
-        tags: ["NLP", "Python", "Jupyter Notebook", "Machine Learning", cleanTitle]
+        topic: category === "nlp" ? "NLP Advanced Module" : "Computational Biology Module",
+        githubUrl: dir.html_url || `https://github.com/FidelCristopher/${repoName}/tree/main/${encodeURIComponent(dir.name)}`,
+        description: `Practical implementation and source code experiments for ${dir.name}. Automatically synchronized from repository FidelCristopher/${repoName}.`,
+        tags: [category === "nlp" ? "NLP" : "CompBio", "Python", "Bioinformatics", cleanTitle]
       };
     });
 
-    // Sort sessions logically (Sesi 1, Sesi 2, Sesi 3, ..., Sesi 11)
-    mergedSessions.sort((a, b) => {
+    sessions.sort((a, b) => {
       const numA = parseInt(a.sessionNum.replace(/\D/g, "") || "0", 10);
       const numB = parseInt(b.sessionNum.replace(/\D/g, "") || "0", 10);
       return numA - numB;
     });
 
-    return NextResponse.json({
-      source: "live",
-      sessions: mergedSessions.length > 0 ? mergedSessions : Object.values(defaultSessions)
-    });
+    return sessions.length > 0 ? sessions : Object.values(curatedMap);
   } catch (err) {
-    return NextResponse.json({
-      source: "error-fallback",
-      sessions: Object.values(defaultSessions)
-    });
+    return Object.values(curatedMap);
   }
+}
+
+export async function GET() {
+  const [nlpSessions, compBioSessions] = await Promise.all([
+    fetchRepoSessions("lab-nlp", "nlp", defaultNlpSessions),
+    fetchRepoSessions("lab-compbio", "compbio", defaultCompBioSessions)
+  ]);
+
+  return NextResponse.json({
+    source: "live",
+    nlpSessions,
+    compBioSessions,
+    allSessions: [...nlpSessions, ...compBioSessions]
+  });
 }
