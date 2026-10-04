@@ -4,7 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 
 interface SessionMeta {
   id: string;
-  category: "nlp" | "compbio" | "compvis" | "deeplearning";
+  category: "nlp" | "compbio" | "compvis" | "deeplearning" | "speechrecognition";
   sessionNum: string;
   title: string;
   topic: string;
@@ -300,13 +300,50 @@ const defaultDeepLearningSessions: SessionMeta[] = [
   }
 ];
 
+const defaultSpeechSessions: SessionMeta[] = [
+  {
+    id: "speech-sesi-2",
+    category: "speechrecognition",
+    sessionNum: "02",
+    title: "Audio Signal Manipulation, Augmentation & Waveform I/O",
+    topic: "Acoustic Signal Processing",
+    githubUrl: "https://github.com/FidelCristopher/lab-speechrecognition/tree/main/Sesi%202",
+    description:
+      "Audio signal input/output handling with wave, soundfile, pydub, librosa, and torchaudio: volume normalization, time reversal, repetition, random gain, and fade-in/fade-out envelope shaping for audio data augmentation.",
+    tags: ["SpeechRecognition", "Audio Processing", "Librosa", "Torchaudio", "PyDub", "Data Augmentation", "Python"]
+  },
+  {
+    id: "speech-sesi-3",
+    category: "speechrecognition",
+    sessionNum: "03",
+    title: "Audio Preprocessing, Channel Conversion & Fast Fourier Transform",
+    topic: "Digital Signal Processing (DSP)",
+    githubUrl: "https://github.com/FidelCristopher/lab-speechrecognition/tree/main/Sesi%203",
+    description:
+      "Digital audio signal processing: stereo to mono down-mixing, amplitude normalization, audio framing with padding, windowing functions, and Fast Fourier Transform (FFT) frequency spectrum decomposition using scipy.signal and scipy.fftpack.",
+    tags: ["SpeechRecognition", "DSP", "FFT", "Fourier Transform", "Signal Processing", "SciPy", "Waveform"]
+  },
+  {
+    id: "speech-sesi-4",
+    category: "speechrecognition",
+    sessionNum: "04",
+    title: "Frame Blocking, Short-Time Fourier Transform & Spectrograms",
+    topic: "Time-Frequency Acoustic Features",
+    githubUrl: "https://github.com/FidelCristopher/lab-speechrecognition/tree/main/Sesi%204",
+    description:
+      "Time-frequency acoustic feature representation: frame blocking with hop length and overlap, reflection padding, windowing, Short-Time Fourier Transform (STFT), and plotting audio power spectrograms for acoustic speech modeling.",
+    tags: ["SpeechRecognition", "STFT", "Spectrogram", "Acoustic Features", "Frame Blocking", "SciPy", "Matplotlib"]
+  }
+];
+
 export function AllLearningView() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<"all" | "deeplearning" | "compvis" | "nlp" | "compbio">("all");
+  const [activeCategory, setActiveCategory] = useState<"all" | "deeplearning" | "compvis" | "speechrecognition" | "nlp" | "compbio">("all");
   const [nlpList, setNlpList] = useState<SessionMeta[]>(defaultNlpSessions);
   const [compBioList, setCompBioList] = useState<SessionMeta[]>(defaultCompBioSessions);
   const [compVisList, setCompVisList] = useState<SessionMeta[]>(defaultCompVisSessions);
   const [deepLearningList, setDeepLearningList] = useState<SessionMeta[]>(defaultDeepLearningSessions);
+  const [speechList, setSpeechList] = useState<SessionMeta[]>(defaultSpeechSessions);
 
   useEffect(() => {
     let isMounted = true;
@@ -319,6 +356,7 @@ export function AllLearningView() {
         if (data.compBioSessions && isMounted) setCompBioList(data.compBioSessions);
         if (data.compVisSessions && isMounted) setCompVisList(data.compVisSessions);
         if (data.deepLearningSessions && isMounted) setDeepLearningList(data.deepLearningSessions);
+        if (data.speechSessions && isMounted) setSpeechList(data.speechSessions);
       } catch (err) {
         // silent fallback
       }
@@ -330,8 +368,8 @@ export function AllLearningView() {
   }, []);
 
   const allSessions = useMemo(() => {
-    return [...deepLearningList, ...compVisList, ...nlpList, ...compBioList];
-  }, [deepLearningList, compVisList, nlpList, compBioList]);
+    return [...deepLearningList, ...compVisList, ...speechList, ...nlpList, ...compBioList];
+  }, [deepLearningList, compVisList, speechList, nlpList, compBioList]);
 
   // Filter based on search and category
   const filteredSessions = useMemo(() => {
@@ -388,6 +426,15 @@ export function AllLearningView() {
               </a>
               {", "}
               <a
+                href="https://github.com/FidelCristopher/lab-speechrecognition"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline hover:text-rose-400 font-mono"
+              >
+                lab-speechrecognition
+              </a>
+              {", "}
+              <a
                 href="https://github.com/FidelCristopher/lab-nlp"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -416,7 +463,7 @@ export function AllLearningView() {
       <div className="grid grid-cols-2 gap-px border-b border-line bg-line sm:grid-cols-4">
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Core Domains</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">Deep Learning, Vision, NLP &amp; Bio</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">Deep Learning, Vision, Speech, NLP &amp; Bio</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Completed Modules</span>
@@ -424,11 +471,11 @@ export function AllLearningView() {
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Core Toolkits</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">TensorFlow, PyTorch, OpenCV, NLTK</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">PyTorch, TensorFlow, OpenCV, Librosa</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Repositories</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">4 Repos (Live Sync)</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">5 Repos (Live Sync)</span>
         </div>
       </div>
 
@@ -456,7 +503,7 @@ export function AllLearningView() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search topic or tag (e.g. DeepLearning, CNN, MLP, Seq2Seq, OpenCV, SIFT, BioPython, NLTK)..."
+            placeholder="Search topic or tag (e.g. SpeechRecognition, STFT, FFT, Librosa, CNN, OpenCV, SIFT, BioPython, NLTK)..."
             className="w-full rounded-lg border border-line bg-background py-2.5 pl-10 pr-9 text-sm text-foreground placeholder:text-muted-foreground/60 transition-all outline-none focus:border-foreground/30 focus:ring-2 focus:ring-foreground/10"
           />
           {searchQuery && (
@@ -509,6 +556,17 @@ export function AllLearningView() {
             </button>
             <button
               type="button"
+              onClick={() => setActiveCategory("speechrecognition")}
+              className={`rounded-md px-2.5 py-1 text-xs font-mono transition-colors ${
+                activeCategory === "speechrecognition"
+                  ? "bg-rose-500 text-white font-semibold"
+                  : "border border-border bg-background text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Speech Lab ({speechList.length})
+            </button>
+            <button
+              type="button"
               onClick={() => setActiveCategory("nlp")}
               className={`rounded-md px-2.5 py-1 text-xs font-mono transition-colors ${
                 activeCategory === "nlp"
@@ -532,14 +590,14 @@ export function AllLearningView() {
           </div>
 
           <div className="flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
-            {["CNN", "MLP", "Seq2Seq", "TensorFlow", "OpenCV", "SIFT", "BioPython", "Word2Vec"].map((suggest) => (
+            {["STFT", "FFT", "Librosa", "CNN", "OpenCV", "SIFT", "BioPython", "Word2Vec"].map((suggest) => (
               <button
                 key={suggest}
                 type="button"
                 onClick={() => setSearchQuery(suggest)}
                 className={`rounded-md border px-1.5 py-0.5 font-mono text-[10px] transition-colors ${
                   searchQuery.toLowerCase() === suggest.toLowerCase()
-                    ? "border-purple-500 bg-purple-500/10 text-purple-400"
+                    ? "border-rose-500 bg-rose-500/10 text-rose-400"
                     : "border-border bg-background text-muted-foreground hover:border-foreground/30 hover:text-foreground"
                 }`}
               >
@@ -557,8 +615,10 @@ export function AllLearningView() {
             <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
               {activeCategory === "all"
                 ? "Coursework Modules & Lab Code"
+                : activeCategory === "speechrecognition"
+                ? "Speech Recognition (lab-speechrecognition)"
                 : activeCategory === "deeplearning"
-                ? "Deep Learning Lab (lab-deeplearning)"
+                ? "Deep Learning (lab-deeplearning)"
                 : activeCategory === "compvis"
                 ? "Computer Vision (lab-compvis)"
                 : activeCategory === "nlp"
@@ -578,7 +638,9 @@ export function AllLearningView() {
           <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 rounded-lg overflow-hidden">
             {filteredSessions.map((session) => {
               const topicColor =
-                session.category === "deeplearning"
+                session.category === "speechrecognition"
+                  ? "text-rose-400/90"
+                  : session.category === "deeplearning"
                   ? "text-purple-400/90"
                   : session.category === "compvis"
                   ? "text-amber-400/90"
@@ -656,7 +718,7 @@ export function AllLearningView() {
               No modules found matching &quot;{searchQuery}&quot;
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Try searching for &quot;CNN&quot;, &quot;MLP&quot;, &quot;Seq2Seq&quot;, &quot;OpenCV&quot;, &quot;BioPython&quot;, or &quot;Word2Vec&quot;.
+              Try searching for &quot;SpeechRecognition&quot;, &quot;STFT&quot;, &quot;FFT&quot;, &quot;CNN&quot;, &quot;OpenCV&quot;, or &quot;BioPython&quot;.
             </p>
             <button
               type="button"

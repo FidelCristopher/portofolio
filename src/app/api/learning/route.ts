@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export interface SessionMeta {
   id: string;
-  category: "nlp" | "compbio" | "compvis" | "deeplearning";
+  category: "nlp" | "compbio" | "compvis" | "deeplearning" | "speechrecognition";
   sessionNum: string;
   title: string;
   topic: string;
@@ -302,9 +302,46 @@ const defaultDeepLearningSessions: Record<string, SessionMeta> = {
   }
 };
 
+// Curated knowledge base for Speech Recognition lab sessions
+const defaultSpeechSessions: Record<string, SessionMeta> = {
+  "Sesi 2": {
+    id: "speech-sesi-2",
+    category: "speechrecognition",
+    sessionNum: "02",
+    title: "Audio Signal Manipulation, Augmentation & Waveform I/O",
+    topic: "Acoustic Signal Processing",
+    githubUrl: "https://github.com/FidelCristopher/lab-speechrecognition/tree/main/Sesi%202",
+    description:
+      "Audio signal input/output handling with wave, soundfile, pydub, librosa, and torchaudio: volume normalization, time reversal, repetition, random gain, and fade-in/fade-out envelope shaping for audio data augmentation.",
+    tags: ["SpeechRecognition", "Audio Processing", "Librosa", "Torchaudio", "PyDub", "Data Augmentation", "Python"]
+  },
+  "Sesi 3": {
+    id: "speech-sesi-3",
+    category: "speechrecognition",
+    sessionNum: "03",
+    title: "Audio Preprocessing, Channel Conversion & Fast Fourier Transform",
+    topic: "Digital Signal Processing (DSP)",
+    githubUrl: "https://github.com/FidelCristopher/lab-speechrecognition/tree/main/Sesi%203",
+    description:
+      "Digital audio signal processing: stereo to mono down-mixing, amplitude normalization, audio framing with padding, windowing functions, and Fast Fourier Transform (FFT) frequency spectrum decomposition using scipy.signal and scipy.fftpack.",
+    tags: ["SpeechRecognition", "DSP", "FFT", "Fourier Transform", "Signal Processing", "SciPy", "Waveform"]
+  },
+  "Sesi 4": {
+    id: "speech-sesi-4",
+    category: "speechrecognition",
+    sessionNum: "04",
+    title: "Frame Blocking, Short-Time Fourier Transform & Spectrograms",
+    topic: "Time-Frequency Acoustic Features",
+    githubUrl: "https://github.com/FidelCristopher/lab-speechrecognition/tree/main/Sesi%204",
+    description:
+      "Time-frequency acoustic feature representation: frame blocking with hop length and overlap, reflection padding, windowing, Short-Time Fourier Transform (STFT), and plotting audio power spectrograms for acoustic speech modeling.",
+    tags: ["SpeechRecognition", "STFT", "Spectrogram", "Acoustic Features", "Frame Blocking", "SciPy", "Matplotlib"]
+  }
+};
+
 async function fetchRepoSessions(
   repoName: string,
-  category: "nlp" | "compbio" | "compvis" | "deeplearning",
+  category: "nlp" | "compbio" | "compvis" | "deeplearning" | "speechrecognition",
   curatedMap: Record<string, SessionMeta>
 ): Promise<SessionMeta[]> {
   try {
@@ -344,7 +381,8 @@ async function fetchRepoSessions(
         nlp: "NLP Advanced Module",
         compbio: "Computational Biology Module",
         compvis: "Computer Vision Module",
-        deeplearning: "Deep Learning Module"
+        deeplearning: "Deep Learning Module",
+        speechrecognition: "Speech Recognition Module"
       };
 
       return {
@@ -355,7 +393,7 @@ async function fetchRepoSessions(
         topic: categoryLabels[category],
         githubUrl: dir.html_url || `https://github.com/FidelCristopher/${repoName}/tree/main/${encodeURIComponent(dir.name)}`,
         description: `Practical implementation and source code experiments for ${dir.name}. Automatically synchronized from repository FidelCristopher/${repoName}.`,
-        tags: [category.toUpperCase(), "Python", "Deep Learning", cleanTitle]
+        tags: [category.toUpperCase(), "Python", "Computer Science", cleanTitle]
       };
     });
 
@@ -372,11 +410,12 @@ async function fetchRepoSessions(
 }
 
 export async function GET() {
-  const [nlpSessions, compBioSessions, compVisSessions, deepLearningSessions] = await Promise.all([
+  const [nlpSessions, compBioSessions, compVisSessions, deepLearningSessions, speechSessions] = await Promise.all([
     fetchRepoSessions("lab-nlp", "nlp", defaultNlpSessions),
     fetchRepoSessions("lab-compbio", "compbio", defaultCompBioSessions),
     fetchRepoSessions("lab-compvis", "compvis", defaultCompVisSessions),
-    fetchRepoSessions("lab-deeplearning", "deeplearning", defaultDeepLearningSessions)
+    fetchRepoSessions("lab-deeplearning", "deeplearning", defaultDeepLearningSessions),
+    fetchRepoSessions("lab-speechrecognition", "speechrecognition", defaultSpeechSessions)
   ]);
 
   return NextResponse.json({
@@ -385,6 +424,7 @@ export async function GET() {
     compBioSessions,
     compVisSessions,
     deepLearningSessions,
-    allSessions: [...nlpSessions, ...compBioSessions, ...compVisSessions, ...deepLearningSessions]
+    speechSessions,
+    allSessions: [...deepLearningSessions, ...compVisSessions, ...speechSessions, ...nlpSessions, ...compBioSessions]
   });
 }
