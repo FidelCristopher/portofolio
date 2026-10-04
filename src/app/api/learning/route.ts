@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export interface SessionMeta {
   id: string;
-  category: "nlp" | "compbio";
+  category: "nlp" | "compbio" | "compvis";
   sessionNum: string;
   title: string;
   topic: string;
@@ -140,9 +140,123 @@ const defaultCompBioSessions: Record<string, SessionMeta> = {
   }
 };
 
+// Curated knowledge base for Computer Vision lab sessions
+const defaultCompVisSessions: Record<string, SessionMeta> = {
+  "Sesi 1": {
+    id: "compvis-sesi-1",
+    category: "compvis",
+    sessionNum: "01",
+    title: "Image I/O, Color Space Conversion & Pixel Manipulation",
+    topic: "Image Processing Basics",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%201",
+    description:
+      "Reading and manipulating raster images with OpenCV (cv2.imread): BGR to Grayscale and RGB color space conversions (cv2.cvtColor), matrix slicing, and plotting channel histograms with Matplotlib.",
+    tags: ["CompVis", "OpenCV", "Color Spaces", "Image Processing", "NumPy", "Python"]
+  },
+  "Sesi 2": {
+    id: "compvis-sesi-2",
+    category: "compvis",
+    sessionNum: "02",
+    title: "Histogram Equalization & Contrast Enhancement",
+    topic: "Intensity Transformations",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%202",
+    description:
+      "Enhancing low-contrast images using cumulative distribution functions (CDF), global histogram equalization (cv2.equalizeHist), and contrast stretching across grayscale distributions.",
+    tags: ["CompVis", "Histogram Equalization", "Contrast Enhancement", "OpenCV", "Image Processing"]
+  },
+  "Sesi 3": {
+    id: "compvis-sesi-3",
+    category: "compvis",
+    sessionNum: "03",
+    title: "Spatial Filtering, Convolution & Noise Reduction",
+    topic: "Neighborhood Filtering",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%203",
+    description:
+      "2D spatial image convolution (cv2.filter2D), Gaussian smoothing, median filtering for impulse/salt-and-pepper noise reduction, and edge-preserving bilateral filtering on photographic datasets.",
+    tags: ["CompVis", "Spatial Filtering", "Gaussian Blur", "Convolution", "Noise Reduction", "OpenCV"]
+  },
+  "Sesi 4": {
+    id: "compvis-sesi-4",
+    category: "compvis",
+    sessionNum: "04",
+    title: "Edge Detection & Morphological Operations",
+    topic: "Boundary & Shape Analysis",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%204",
+    description:
+      "Gradient-based boundary extraction using Sobel, Scharr, and multi-stage Canny edge detection (cv2.Canny), combined with morphological erosion, dilation, opening, and closing operations.",
+    tags: ["CompVis", "Edge Detection", "Canny", "Morphology", "Sobel", "Computer Vision"]
+  },
+  "Sesi 5": {
+    id: "compvis-sesi-5",
+    category: "compvis",
+    sessionNum: "05",
+    title: "Corner Detection (Harris & Shi-Tomasi Sub-pixel)",
+    topic: "Geometric Feature Detection",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%205",
+    description:
+      "Identifying salient geometric corners using Harris Corner Detector (cv2.cornerHarris), sub-pixel corner coordinate refinement (cv2.cornerSubPix), and Shi-Tomasi Good Features to Track.",
+    tags: ["CompVis", "Corner Detection", "Harris Corner", "Shi-Tomasi", "Feature Extraction"]
+  },
+  "Sesi 6": {
+    id: "compvis-sesi-6",
+    category: "compvis",
+    sessionNum: "06",
+    title: "Scale-Invariant Keypoints & Descriptors (SIFT, ORB, KAZE)",
+    topic: "Local Feature Descriptors",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%206",
+    description:
+      "Scale-invariant feature transformation: detecting interest points and generating high-dimensional descriptors using SIFT, ORB (Oriented FAST and Rotated BRIEF), and KAZE for robust visual matching.",
+    tags: ["CompVis", "SIFT", "ORB", "KAZE", "Keypoints", "Feature Matching", "OpenCV"]
+  },
+  "Sesi 8": {
+    id: "compvis-sesi-8",
+    category: "compvis",
+    sessionNum: "08",
+    title: "Bag of Visual Words (BoVW) & K-Means Codebooks",
+    topic: "Image Classification Representation",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%208",
+    description:
+      "Constructing a Bag of Visual Words (BoVW) codebook vocabulary using vector quantization and K-Means clustering in SciPy & Scikit-Learn to represent images as visual feature frequency histograms.",
+    tags: ["CompVis", "Bag of Visual Words", "BoVW", "K-Means", "Vector Quantization", "Clustering"]
+  },
+  "Sesi 9": {
+    id: "compvis-sesi-9",
+    category: "compvis",
+    sessionNum: "09",
+    title: "Content-Based Image Retrieval & Euclidean Distance Matching",
+    topic: "Visual Search & CBIR",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%209",
+    description:
+      "Content-Based Image Retrieval (CBIR) engine: indexing image feature histograms, computing pairwise nearest neighbors with Euclidean distance, and retrieving ranked query matches.",
+    tags: ["CompVis", "Feature Matching", "FLANN", "Euclidean Distance", "Image Retrieval", "CBIR"]
+  },
+  "Sesi 11": {
+    id: "compvis-sesi-11",
+    category: "compvis",
+    sessionNum: "11",
+    title: "Object & Face Detection with Haar Cascades",
+    topic: "Object Localization & Cascades",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%2011",
+    description:
+      "Real-time object and facial landmark detection using Viola-Jones algorithm with pre-trained Haar Feature-based Cascade Classifiers (haarcascade_frontalface_default.xml) and bounding box evaluation.",
+    tags: ["CompVis", "Haar Cascades", "Face Detection", "Object Detection", "CascadeClassifier", "OpenCV"]
+  },
+  "LatihanQuiz.py": {
+    id: "compvis-quiz",
+    category: "compvis",
+    sessionNum: "Quiz",
+    title: "SIFT Feature Matching with FLANN & Lowe's Ratio Test",
+    topic: "Robust Object Recognition",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/LatihanQuiz.py",
+    description:
+      "End-to-end practical pipeline: dataset preprocessing, SIFT feature extraction, FLANN-based KD-tree matcher, and Lowe's Ratio Test filtering for invariant object recognition under perspective transforms.",
+    tags: ["CompVis", "SIFT", "FLANN", "Lowe's Ratio Test", "Object Recognition", "Exam Practice"]
+  }
+};
+
 async function fetchRepoSessions(
   repoName: string,
-  category: "nlp" | "compbio",
+  category: "nlp" | "compbio" | "compvis",
   curatedMap: Record<string, SessionMeta>
 ): Promise<SessionMeta[]> {
   try {
@@ -166,7 +280,7 @@ async function fetchRepoSessions(
     if (!Array.isArray(items)) return Object.values(curatedMap);
 
     const dirItems = items.filter(
-      (item) => item.type === "dir" && (item.name.toLowerCase().includes("sesi") || item.name.toLowerCase().includes("session"))
+      (item) => item.type === "dir" && (item.name.toLowerCase().includes("sesi") || item.name.toLowerCase().includes("session") || item.name.toLowerCase().includes("quiz") || item.name.toLowerCase().includes("latihan"))
     );
 
     const sessions: SessionMeta[] = dirItems.map((dir) => {
@@ -175,24 +289,30 @@ async function fetchRepoSessions(
       }
 
       const numMatch = dir.name.match(/\d+/);
-      const numFormatted = numMatch ? numMatch[0].padStart(2, "0") : dir.name;
-      const cleanTitle = dir.name.replace(/[-_]/g, " ");
+      const numFormatted = numMatch ? numMatch[0].padStart(2, "0") : "Mod";
+      const cleanTitle = dir.name.replace(/[-_.]/g, " ");
+
+      const categoryLabels = {
+        nlp: "NLP Advanced Module",
+        compbio: "Computational Biology Module",
+        compvis: "Computer Vision Module"
+      };
 
       return {
-        id: `${category}-${dir.name.toLowerCase().replace(/[\s_]+/g, "-")}`,
+        id: `${category}-${dir.name.toLowerCase().replace(/[\s_.]+/g, "-")}`,
         category,
         sessionNum: `${numFormatted}`,
         title: `${cleanTitle} Module`,
-        topic: category === "nlp" ? "NLP Advanced Module" : "Computational Biology Module",
+        topic: categoryLabels[category],
         githubUrl: dir.html_url || `https://github.com/FidelCristopher/${repoName}/tree/main/${encodeURIComponent(dir.name)}`,
         description: `Practical implementation and source code experiments for ${dir.name}. Automatically synchronized from repository FidelCristopher/${repoName}.`,
-        tags: [category === "nlp" ? "NLP" : "CompBio", "Python", "Bioinformatics", cleanTitle]
+        tags: [category.toUpperCase(), "Python", "Computer Science", cleanTitle]
       };
     });
 
     sessions.sort((a, b) => {
-      const numA = parseInt(a.sessionNum.replace(/\D/g, "") || "0", 10);
-      const numB = parseInt(b.sessionNum.replace(/\D/g, "") || "0", 10);
+      const numA = parseInt(a.sessionNum.replace(/\D/g, "") || "99", 10);
+      const numB = parseInt(b.sessionNum.replace(/\D/g, "") || "99", 10);
       return numA - numB;
     });
 
@@ -203,15 +323,17 @@ async function fetchRepoSessions(
 }
 
 export async function GET() {
-  const [nlpSessions, compBioSessions] = await Promise.all([
+  const [nlpSessions, compBioSessions, compVisSessions] = await Promise.all([
     fetchRepoSessions("lab-nlp", "nlp", defaultNlpSessions),
-    fetchRepoSessions("lab-compbio", "compbio", defaultCompBioSessions)
+    fetchRepoSessions("lab-compbio", "compbio", defaultCompBioSessions),
+    fetchRepoSessions("lab-compvis", "compvis", defaultCompVisSessions)
   ]);
 
   return NextResponse.json({
     source: "live",
     nlpSessions,
     compBioSessions,
-    allSessions: [...nlpSessions, ...compBioSessions]
+    compVisSessions,
+    allSessions: [...nlpSessions, ...compBioSessions, ...compVisSessions]
   });
 }

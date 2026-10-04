@@ -4,7 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 
 interface SessionMeta {
   id: string;
-  category: "nlp" | "compbio";
+  category: "nlp" | "compbio" | "compvis";
   sessionNum: string;
   title: string;
   topic: string;
@@ -140,11 +140,125 @@ const defaultCompBioSessions: SessionMeta[] = [
   }
 ];
 
+const defaultCompVisSessions: SessionMeta[] = [
+  {
+    id: "compvis-sesi-1",
+    category: "compvis",
+    sessionNum: "01",
+    title: "Image I/O, Color Space Conversion & Pixel Manipulation",
+    topic: "Image Processing Basics",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%201",
+    description:
+      "Reading and manipulating raster images with OpenCV (cv2.imread): BGR to Grayscale and RGB color space conversions (cv2.cvtColor), matrix slicing, and plotting channel histograms with Matplotlib.",
+    tags: ["CompVis", "OpenCV", "Color Spaces", "Image Processing", "NumPy", "Python"]
+  },
+  {
+    id: "compvis-sesi-2",
+    category: "compvis",
+    sessionNum: "02",
+    title: "Histogram Equalization & Contrast Enhancement",
+    topic: "Intensity Transformations",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%202",
+    description:
+      "Enhancing low-contrast images using cumulative distribution functions (CDF), global histogram equalization (cv2.equalizeHist), and contrast stretching across grayscale distributions.",
+    tags: ["CompVis", "Histogram Equalization", "Contrast Enhancement", "OpenCV", "Image Processing"]
+  },
+  {
+    id: "compvis-sesi-3",
+    category: "compvis",
+    sessionNum: "03",
+    title: "Spatial Filtering, Convolution & Noise Reduction",
+    topic: "Neighborhood Filtering",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%203",
+    description:
+      "2D spatial image convolution (cv2.filter2D), Gaussian smoothing, median filtering for impulse/salt-and-pepper noise reduction, and edge-preserving bilateral filtering on photographic datasets.",
+    tags: ["CompVis", "Spatial Filtering", "Gaussian Blur", "Convolution", "Noise Reduction", "OpenCV"]
+  },
+  {
+    id: "compvis-sesi-4",
+    category: "compvis",
+    sessionNum: "04",
+    title: "Edge Detection & Morphological Operations",
+    topic: "Boundary & Shape Analysis",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%204",
+    description:
+      "Gradient-based boundary extraction using Sobel, Scharr, and multi-stage Canny edge detection (cv2.Canny), combined with morphological erosion, dilation, opening, and closing operations.",
+    tags: ["CompVis", "Edge Detection", "Canny", "Morphology", "Sobel", "Computer Vision"]
+  },
+  {
+    id: "compvis-sesi-5",
+    category: "compvis",
+    sessionNum: "05",
+    title: "Corner Detection (Harris & Shi-Tomasi Sub-pixel)",
+    topic: "Geometric Feature Detection",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%205",
+    description:
+      "Identifying salient geometric corners using Harris Corner Detector (cv2.cornerHarris), sub-pixel corner coordinate refinement (cv2.cornerSubPix), and Shi-Tomasi Good Features to Track.",
+    tags: ["CompVis", "Corner Detection", "Harris Corner", "Shi-Tomasi", "Feature Extraction"]
+  },
+  {
+    id: "compvis-sesi-6",
+    category: "compvis",
+    sessionNum: "06",
+    title: "Scale-Invariant Keypoints & Descriptors (SIFT, ORB, KAZE)",
+    topic: "Local Feature Descriptors",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%206",
+    description:
+      "Scale-invariant feature transformation: detecting interest points and generating high-dimensional descriptors using SIFT, ORB (Oriented FAST and Rotated BRIEF), and KAZE for robust visual matching.",
+    tags: ["CompVis", "SIFT", "ORB", "KAZE", "Keypoints", "Feature Matching", "OpenCV"]
+  },
+  {
+    id: "compvis-sesi-8",
+    category: "compvis",
+    sessionNum: "08",
+    title: "Bag of Visual Words (BoVW) & K-Means Codebooks",
+    topic: "Image Classification Representation",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%208",
+    description:
+      "Constructing a Bag of Visual Words (BoVW) codebook vocabulary using vector quantization and K-Means clustering in SciPy & Scikit-Learn to represent images as visual feature frequency histograms.",
+    tags: ["CompVis", "Bag of Visual Words", "BoVW", "K-Means", "Vector Quantization", "Clustering"]
+  },
+  {
+    id: "compvis-sesi-9",
+    category: "compvis",
+    sessionNum: "09",
+    title: "Content-Based Image Retrieval & Euclidean Distance Matching",
+    topic: "Visual Search & CBIR",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%209",
+    description:
+      "Content-Based Image Retrieval (CBIR) engine: indexing image feature histograms, computing pairwise nearest neighbors with Euclidean distance, and retrieving ranked query matches.",
+    tags: ["CompVis", "Feature Matching", "FLANN", "Euclidean Distance", "Image Retrieval", "CBIR"]
+  },
+  {
+    id: "compvis-sesi-11",
+    category: "compvis",
+    sessionNum: "11",
+    title: "Object & Face Detection with Haar Cascades",
+    topic: "Object Localization & Cascades",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/Sesi%2011",
+    description:
+      "Real-time object and facial landmark detection using Viola-Jones algorithm with pre-trained Haar Feature-based Cascade Classifiers (haarcascade_frontalface_default.xml) and bounding box evaluation.",
+    tags: ["CompVis", "Haar Cascades", "Face Detection", "Object Detection", "CascadeClassifier", "OpenCV"]
+  },
+  {
+    id: "compvis-quiz",
+    category: "compvis",
+    sessionNum: "Quiz",
+    title: "SIFT Feature Matching with FLANN & Lowe's Ratio Test",
+    topic: "Robust Object Recognition",
+    githubUrl: "https://github.com/FidelCristopher/lab-compvis/tree/main/LatihanQuiz.py",
+    description:
+      "End-to-end practical pipeline: dataset preprocessing, SIFT feature extraction, FLANN-based KD-tree matcher, and Lowe's Ratio Test filtering for invariant object recognition under perspective transforms.",
+    tags: ["CompVis", "SIFT", "FLANN", "Lowe's Ratio Test", "Object Recognition", "Exam Practice"]
+  }
+];
+
 export function AllLearningView() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<"all" | "nlp" | "compbio">("all");
+  const [activeCategory, setActiveCategory] = useState<"all" | "nlp" | "compbio" | "compvis">("all");
   const [nlpList, setNlpList] = useState<SessionMeta[]>(defaultNlpSessions);
   const [compBioList, setCompBioList] = useState<SessionMeta[]>(defaultCompBioSessions);
+  const [compVisList, setCompVisList] = useState<SessionMeta[]>(defaultCompVisSessions);
 
   useEffect(() => {
     let isMounted = true;
@@ -155,6 +269,7 @@ export function AllLearningView() {
         const data = await res.json();
         if (data.nlpSessions && isMounted) setNlpList(data.nlpSessions);
         if (data.compBioSessions && isMounted) setCompBioList(data.compBioSessions);
+        if (data.compVisSessions && isMounted) setCompVisList(data.compVisSessions);
       } catch (err) {
         // silent fallback
       }
@@ -166,8 +281,8 @@ export function AllLearningView() {
   }, []);
 
   const allSessions = useMemo(() => {
-    return [...nlpList, ...compBioList];
-  }, [nlpList, compBioList]);
+    return [...nlpList, ...compBioList, ...compVisList];
+  }, [nlpList, compBioList, compVisList]);
 
   // Filter based on search and category
   const filteredSessions = useMemo(() => {
@@ -181,11 +296,10 @@ export function AllLearningView() {
 
     return list.filter((s) => {
       const titleMatch = s.title.toLowerCase().includes(q);
-      const sessionMatch = s.sessionNum.toLowerCase().includes(q);
       const topicMatch = s.topic.toLowerCase().includes(q);
       const tagMatch = s.tags.some((t) => t.toLowerCase().includes(q));
       const descMatch = s.description.toLowerCase().includes(q);
-      return titleMatch || sessionMatch || topicMatch || tagMatch || descMatch;
+      return titleMatch || topicMatch || tagMatch || descMatch;
     });
   }, [searchQuery, activeCategory, allSessions]);
 
@@ -205,7 +319,7 @@ export function AllLearningView() {
               </span>
             </div>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Hands-on lab modules automatically synced from{" "}
+              Live lab modules automatically synced from{" "}
               <a
                 href="https://github.com/FidelCristopher/lab-nlp"
                 target="_blank"
@@ -213,8 +327,8 @@ export function AllLearningView() {
                 className="text-foreground underline hover:text-emerald-400 font-mono"
               >
                 lab-nlp
-              </a>{" "}
-              &amp;{" "}
+              </a>
+              {", "}
               <a
                 href="https://github.com/FidelCristopher/lab-compbio"
                 target="_blank"
@@ -222,6 +336,15 @@ export function AllLearningView() {
                 className="text-foreground underline hover:text-emerald-400 font-mono"
               >
                 lab-compbio
+              </a>
+              {" & "}
+              <a
+                href="https://github.com/FidelCristopher/lab-compvis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline hover:text-emerald-400 font-mono"
+              >
+                lab-compvis
               </a>
             </p>
           </div>
@@ -235,7 +358,7 @@ export function AllLearningView() {
       <div className="grid grid-cols-2 gap-px border-b border-line bg-line sm:grid-cols-4">
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Core Domains</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">NLP &amp; CompBio</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">NLP, Vision &amp; Bio</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Completed Modules</span>
@@ -243,11 +366,11 @@ export function AllLearningView() {
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Core Toolkits</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">Biopython, NLTK, Gensim</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">OpenCV, NLTK, Biopython</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Repositories</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">2 Repos (Public)</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">3 Repos (Live Sync)</span>
         </div>
       </div>
 
@@ -275,7 +398,7 @@ export function AllLearningView() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search topic or tag (e.g. BioPython, DNA, Word2Vec, GloVe, Alignment, NLTK)..."
+            placeholder="Search topic or tag (e.g. OpenCV, SIFT, Canny, BioPython, DNA, Word2Vec, GloVe)..."
             className="w-full rounded-lg border border-line bg-background py-2.5 pl-10 pr-9 text-sm text-foreground placeholder:text-muted-foreground/60 transition-all outline-none focus:border-foreground/30 focus:ring-2 focus:ring-foreground/10"
           />
           {searchQuery && (
@@ -292,7 +415,7 @@ export function AllLearningView() {
 
         {/* Category Tabs & Quick Suggestion Pills */}
         <div className="flex flex-wrap items-center justify-between gap-2 pt-3">
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1.5">
             <button
               type="button"
               onClick={() => setActiveCategory("all")}
@@ -303,6 +426,17 @@ export function AllLearningView() {
               }`}
             >
               All Modules ({allSessions.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("compvis")}
+              className={`rounded-md px-2.5 py-1 text-xs font-mono transition-colors ${
+                activeCategory === "compvis"
+                  ? "bg-amber-400 text-black font-semibold"
+                  : "border border-border bg-background text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              CompVis Lab ({compVisList.length})
             </button>
             <button
               type="button"
@@ -329,7 +463,7 @@ export function AllLearningView() {
           </div>
 
           <div className="flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
-            {["BioPython", "DNA Sequencing", "Word2Vec", "GloVe", "Alignment", "GenBank", "POS Tagging"].map((suggest) => (
+            {["OpenCV", "SIFT", "Canny", "BioPython", "Word2Vec", "GloVe", "Alignment", "Haar Cascades"].map((suggest) => (
               <button
                 key={suggest}
                 type="button"
@@ -354,12 +488,14 @@ export function AllLearningView() {
             <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
               {activeCategory === "all"
                 ? "Coursework Modules & Lab Code"
+                : activeCategory === "compvis"
+                ? "Computer Vision (lab-compvis)"
                 : activeCategory === "nlp"
                 ? "Natural Language Processing (lab-nlp)"
                 : "Computational Biology (lab-compbio)"}
             </h3>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Click any card to inspect the corresponding Jupyter notebook and source code on GitHub.
+              Click any card to inspect the corresponding Python script, Jupyter notebook, and source code on GitHub.
             </p>
           </div>
           <span className="font-mono text-xs text-muted-foreground shrink-0">
@@ -369,76 +505,85 @@ export function AllLearningView() {
 
         {filteredSessions.length > 0 ? (
           <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 rounded-lg overflow-hidden">
-            {filteredSessions.map((session) => (
-              <a
-                key={session.id}
-                href={session.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col justify-between bg-background p-4 transition-all duration-200 hover:bg-muted/40 cursor-pointer"
-              >
-                <div>
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className={`text-[11px] font-mono ${session.category === "compbio" ? "text-sky-400/90" : "text-emerald-400/90"}`}>
-                        {session.topic}
-                      </span>
+            {filteredSessions.map((session) => {
+              const topicColor =
+                session.category === "compvis"
+                  ? "text-amber-400/90"
+                  : session.category === "compbio"
+                  ? "text-sky-400/90"
+                  : "text-emerald-400/90";
+
+              return (
+                <a
+                  key={session.id}
+                  href={session.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col justify-between bg-background p-4 transition-all duration-200 hover:bg-muted/40 cursor-pointer"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[11px] font-mono font-medium ${topicColor}`}>
+                          {session.topic}
+                        </span>
+                      </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-arrow-up-right text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground shrink-0"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path>
+                      </svg>
                     </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-arrow-up-right text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground shrink-0"
-                    >
-                      <path d="M7 7h10v10"></path>
-                      <path d="M7 17 17 7"></path>
-                    </svg>
+
+                    <h4 className="font-semibold text-base text-foreground mb-1.5 group-hover:text-emerald-400 transition-colors">
+                      {session.title}
+                    </h4>
+
+                    <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                      {session.description}
+                    </p>
                   </div>
 
-                  <h4 className="font-semibold text-base text-foreground mb-1.5 group-hover:text-emerald-400 transition-colors">
-                    {session.title}
-                  </h4>
-
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-                    {session.description}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-line/60">
-                  {session.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setSearchQuery(tag);
-                      }}
-                      className={`inline-flex items-center rounded-md border px-1.5 py-0.5 font-mono text-[10px] transition-colors ${
-                        searchQuery.toLowerCase() && tag.toLowerCase().includes(searchQuery.toLowerCase())
-                          ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
-                          : "border-border bg-muted/50 text-muted-foreground hover:border-foreground/30 hover:text-foreground"
-                      }`}
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </a>
-            ))}
+                  <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-line/60">
+                    {session.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setSearchQuery(tag);
+                        }}
+                        className={`inline-flex items-center rounded-md border px-1.5 py-0.5 font-mono text-[10px] transition-colors ${
+                          searchQuery.toLowerCase() && tag.toLowerCase().includes(searchQuery.toLowerCase())
+                            ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
+                            : "border-border bg-muted/50 text-muted-foreground hover:border-foreground/30 hover:text-foreground"
+                        }`}
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </a>
+              );
+            })}
           </div>
         ) : (
           <div className="flex min-h-[140px] flex-col items-center justify-center rounded-lg border border-dashed border-line bg-muted/20 p-6 text-center">
             <p className="font-handwritten text-2xl text-muted-foreground">
-              No sessions found matching &quot;{searchQuery}&quot;
+              No modules found matching &quot;{searchQuery}&quot;
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Try searching for &quot;BioPython&quot;, &quot;DNA&quot;, &quot;Word2Vec&quot;, &quot;GloVe&quot;, or &quot;Alignment&quot;.
+              Try searching for &quot;OpenCV&quot;, &quot;SIFT&quot;, &quot;BioPython&quot;, &quot;DNA&quot;, or &quot;Word2Vec&quot;.
             </p>
             <button
               type="button"
