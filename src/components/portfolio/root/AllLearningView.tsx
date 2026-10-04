@@ -5,80 +5,121 @@ import React, { useState, useMemo } from "react";
 export function AllLearningView() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const learningPillars = [
+  const nlpSessions = [
     {
-      id: "ai-ml",
-      title: "Artificial Intelligence & Deep Learning",
-      level: "Core Specialization",
+      id: "sesi-1",
+      sessionNum: "Session 01",
+      title: "Text Tokenization & Stopwords Filtering",
+      topic: "Text Preprocessing Foundations",
+      githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%201",
       description:
-        "Building practical neural networks and machine learning models. Hands-on experience with 1D-CNN architecture for movement analysis in AMORA, computer vision with OpenCV, and integrating LLMs for real-time contextual feedback.",
-      tags: ["Python", "PyTorch", "TensorFlow", "1D-CNN", "OpenCV", "LLMs", "Scikit-Learn", "AI", "Deep Learning", "Machine Learning"]
+        "Fundamental natural language processing techniques: segmenting raw paragraph text into sentences (sent_tokenize) and words (word_tokenize), filtering punctuation characters, and removing domain-specific stop words using NLTK corpus.",
+      tags: ["NLP", "Tokenization", "NLTK", "Stopwords", "Text Cleaning", "Python"]
     },
     {
-      id: "cp-dsa",
-      title: "Competitive Programming & Algorithmic Problem Solving",
-      level: "Active Daily Practice",
+      id: "sesi-2",
+      sessionNum: "Session 02",
+      title: "Stemming & WordNet Lemmatization",
+      topic: "Morphological Analysis",
+      githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%202",
       description:
-        "Sharpening core algorithmic thinking through Codeforces problem solving. Practicing greedy algorithms, dynamic programming, brute force, string manipulation, and graph traversal with modern C++23.",
-      tags: ["C++23", "C++", "Codeforces", "Data Structures", "Algorithms", "Mathematics", "Competitive Programming"]
+        "Morphological text reduction comparing rule-based algorithmic stemmers (PorterStemmer, LancasterStemmer) against vocabulary-aware WordNetLemmatizer to normalize inflectional variants back to canonical base words.",
+      tags: ["NLP", "Stemming", "Lemmatization", "WordNet", "Lancaster", "NLTK", "Python"]
     },
     {
-      id: "web-dev",
-      title: "Modern Web Engineering & Full-Stack Development",
-      level: "Production Ready",
+      id: "sesi-3",
+      sessionNum: "Session 03",
+      title: "POS Tagging, Frequency Distribution & NER",
+      topic: "Syntactic & Semantic Tagging",
+      githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%203",
       description:
-        "Developing high-performance, responsive web applications using Next.js 16 (App Router & Turbopack), React 19, TypeScript strict mode, and Tailwind CSS v4. Focusing on clean modular architecture and API integrations.",
-      tags: ["Next.js 16", "Next.js", "React 19", "React", "TypeScript", "Tailwind CSS v4", "Tailwind", "Node.js", "REST APIs", "Full-Stack", "Web Development"]
+        "Grammatical part-of-speech classification (pos_tag), term frequency distribution analysis (FreqDist), chunking rules, and Named Entity Recognition (ne_chunk) to identify proper nouns and contextual syntactic patterns in documents.",
+      tags: ["NLP", "POS Tagging", "NER", "FreqDist", "Chunking", "NLTK", "Syntax"]
     },
     {
-      id: "ui-ux",
-      title: "UI/UX Design & Interface Prototyping",
-      level: "Design to Code",
+      id: "sesi-4",
+      sessionNum: "Session 04",
+      title: "End-to-End NLP Preprocessing & Emotion Classifier",
+      topic: "Pipeline & Model Serialization",
+      githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%204",
       description:
-        "Bridging algorithm design with intuitive, user-centered digital interfaces using Figma. Crafting wireframes, design systems, and responsive components that prioritize clarity, accessibility, and real-world usability.",
-      tags: ["Figma", "Design Systems", "UI/UX", "UI", "UX", "Component Architecture", "Mobile Design", "Prototyping"]
+        "Complete automated text pipeline: cleaning noisy comment datasets (emotion_comment.csv), tokenization, POS-informed lemmatization, feature extraction, and training a sentiment/emotion text classifier exported as model_classifier.pkl.",
+      tags: ["NLP", "Text Classification", "Preprocessing Pipeline", "Emotion Analysis", "Scikit-Learn", "Pickle"]
     },
     {
-      id: "database",
-      title: "Database Systems & Backend Architecture",
-      level: "Applied Foundations",
+      id: "sesi-8",
+      sessionNum: "Session 08",
+      title: "Language Modeling with N-Grams & Cosine Similarity",
+      topic: "Vectorization & Document Distance",
+      githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%208",
       description:
-        "Designing relational databases, schema normalization, complex SQL queries, and integrating robust database solutions using PostgreSQL, Supabase, and MySQL with secure backend authentication.",
-      tags: ["PostgreSQL", "Supabase", "SQL", "MySQL", "PHP", "FastAPI", "Database", "Backend"]
+        "Unigram, Bigram, and Trigram language modeling using scikit-learn CountVectorizer. Transforming unstructured text into Bag-of-Words sparse matrices and computing document similarity metrics using Cosine Distance.",
+      tags: ["NLP", "N-Gram", "CountVectorizer", "Cosine Similarity", "Vector Space", "Language Modeling"]
     },
     {
-      id: "devops-tooling",
-      title: "DevOps, Containerization & Developer Tooling",
-      level: "Workflow & Environment",
+      id: "sesi-9",
+      sessionNum: "Session 09",
+      title: "Dense Word Embeddings (Word2Vec & Pre-trained GloVe)",
+      topic: "Vector Semantics & Word Math",
+      githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%209",
       description:
-        "Configuring reproducible development environments using Docker, managing version control on GitHub, Linux command line automation, and monitoring pipelines with Prometheus and Grafana.",
-      tags: ["Docker", "Git / GitHub", "Git", "GitHub", "Linux", "Prometheus", "Grafana", "VS Code", "DevOps", "Tooling"]
+        "Continuous vector representations of words. Training custom Word2Vec architectures (Skip-Gram & CBOW) using Gensim and mapping semantic word vectors with Stanford's pre-trained GloVe (100d), evaluating semantic cosine similarity.",
+      tags: ["NLP", "Word2Vec", "GloVe", "Word Embeddings", "Gensim", "Semantic Similarity", "Deep Learning"]
+    },
+    {
+      id: "sesi-11",
+      sessionNum: "Session 11",
+      title: "Real-World Job Posting Text Classifier (UAP Capstone)",
+      topic: "Comprehensive ML Project",
+      githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%2011",
+      description:
+        "Real-world NLP classification on large job posting dataset (jobpostingdata.csv): multi-step cleaning, tokenization, lemmatization with POS tags, probabilistic Naive Bayes classification, and accuracy benchmarking for UAP exam criteria.",
+      tags: ["NLP", "Text Classification", "Naive Bayes", "Feature Extraction", "Pandas", "UAP Exam"]
     }
   ];
 
   // Filter based on searchQuery
-  const filteredPillars = useMemo(() => {
+  const filteredSessions = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
-    if (!q) return learningPillars;
+    if (!q) return nlpSessions;
 
-    return learningPillars.filter((p) => {
-      const titleMatch = p.title.toLowerCase().includes(q);
-      const tagMatch = p.tags.some((t) => t.toLowerCase().includes(q));
-      const descMatch = p.description.toLowerCase().includes(q);
-      return titleMatch || tagMatch || descMatch;
+    return nlpSessions.filter((s) => {
+      const titleMatch = s.title.toLowerCase().includes(q);
+      const sessionMatch = s.sessionNum.toLowerCase().includes(q);
+      const topicMatch = s.topic.toLowerCase().includes(q);
+      const tagMatch = s.tags.some((t) => t.toLowerCase().includes(q));
+      const descMatch = s.description.toLowerCase().includes(q);
+      return titleMatch || sessionMatch || topicMatch || tagMatch || descMatch;
     });
-  }, [searchQuery, learningPillars]);
+  }, [searchQuery, nlpSessions]);
 
   return (
     <div className="relative z-1 -mt-px border-x border-t border-line bg-card max-md:border-x-0">
       {/* Header Panel */}
       <header data-slot="panel-header" className="border-b border-line px-4 py-3">
         <div className="flex items-center justify-between gap-3">
-          <h2 data-slot="panel-title" className="font-handwritten text-3xl font-semibold tracking-tight">
-            My Learning &amp; Knowledge Hub
-          </h2>
+          <div>
+            <h2 data-slot="panel-title" className="font-handwritten text-3xl font-semibold tracking-tight">
+              Natural Language Processing Lab
+            </h2>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Coursework &amp; implementations from{" "}
+              <a
+                href="https://github.com/FidelCristopher/lab-nlp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline hover:text-emerald-400 font-mono inline-flex items-center gap-1"
+              >
+                FidelCristopher/lab-nlp
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a>
+            </p>
+          </div>
           <span className="font-mono text-xs text-muted-foreground">
-            Computer Science @ Binus University
+            BINUS Computer Science
           </span>
         </div>
       </header>
@@ -86,20 +127,20 @@ export function AllLearningView() {
       {/* Summary Stats Grid */}
       <div className="grid grid-cols-2 gap-px border-b border-line bg-line sm:grid-cols-4">
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Primary Focus</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">AI / Deep Learning</span>
+          <span className="text-xs text-muted-foreground">Subject</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">NLP &amp; Text Mining</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Problem Solving</span>
-          <span className="font-mono text-base font-bold tracking-tight text-emerald-400">Codeforces Active</span>
+          <span className="text-xs text-muted-foreground">Completed Sessions</span>
+          <span className="font-mono text-base font-bold tracking-tight text-emerald-400">7 Core Modules</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Main Languages</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">Python, C++, TS</span>
+          <span className="text-xs text-muted-foreground">Primary Libraries</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">NLTK, Gensim, Sklearn</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
-          <span className="text-xs text-muted-foreground">Design Tool</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">Figma</span>
+          <span className="text-xs text-muted-foreground">Repository</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">lab-nlp</span>
         </div>
       </div>
 
@@ -127,7 +168,7 @@ export function AllLearningView() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by topic title or tag (e.g. PyTorch, C++, Figma, Web, Algorithms)..."
+            placeholder="Search session by topic, algorithm, or tag (e.g. Word2Vec, GloVe, POS Tagging, NLTK)..."
             className="w-full rounded-lg border border-line bg-background py-2.5 pl-10 pr-9 text-sm text-foreground placeholder:text-muted-foreground/60 transition-all outline-none focus:border-foreground/30 focus:ring-2 focus:ring-foreground/10"
           />
           {searchQuery && (
@@ -144,8 +185,8 @@ export function AllLearningView() {
 
         {/* Quick Suggestion Pills */}
         <div className="flex flex-wrap items-center gap-1.5 pt-2.5 text-xs text-muted-foreground">
-          <span className="font-mono text-[11px] mr-1">Popular:</span>
-          {["Python", "PyTorch", "C++", "Next.js", "Figma", "Codeforces", "Docker"].map((suggest) => (
+          <span className="font-mono text-[11px] mr-1">Filter Tag:</span>
+          {["NLP", "Tokenization", "Stemming", "POS Tagging", "Word2Vec", "GloVe", "N-Gram", "Classification"].map((suggest) => (
             <button
               key={suggest}
               type="button"
@@ -162,67 +203,97 @@ export function AllLearningView() {
         </div>
       </div>
 
-      {/* 2-Column Learning Pillars Grid */}
+      {/* 2-Column Session Cards Grid (Interactive GitHub Links) */}
       <div className="p-4 border-b border-line">
         <div className="flex items-center justify-between mb-3">
           <div>
             <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
-              Learning Focus Areas
+              Lab Sessions &amp; Notebooks
             </h3>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Key areas of study, hands-on implementation, and continuous technical growth.
+              Click any card to inspect the corresponding Jupyter notebook and source code on GitHub.
             </p>
           </div>
           <span className="font-mono text-xs text-muted-foreground shrink-0">
-            {filteredPillars.length} of {learningPillars.length} topics
+            {filteredSessions.length} of {nlpSessions.length} sessions
           </span>
         </div>
 
-        {filteredPillars.length > 0 ? (
+        {filteredSessions.length > 0 ? (
           <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 rounded-lg overflow-hidden">
-            {filteredPillars.map((pillar) => (
-              <div
-                key={pillar.id}
-                className="flex flex-col justify-between bg-background p-4 transition-colors hover:bg-muted/40"
+            {filteredSessions.map((session) => (
+              <a
+                key={session.id}
+                href={session.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between bg-background p-4 transition-all duration-200 hover:bg-muted/40 cursor-pointer"
               >
                 <div>
-                  <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <h4 className="font-semibold text-sm text-foreground">
-                      {pillar.title}
-                    </h4>
-                    <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border shrink-0">
-                      {pillar.level}
-                    </span>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-muted text-muted-foreground border border-border font-semibold">
+                        {session.sessionNum}
+                      </span>
+                      <span className="text-[11px] font-mono text-emerald-400/90">
+                        {session.topic}
+                      </span>
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-arrow-up-right text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground shrink-0"
+                    >
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
                   </div>
+
+                  <h4 className="font-semibold text-base text-foreground mb-1.5 group-hover:text-emerald-400 transition-colors">
+                    {session.title}
+                  </h4>
+
                   <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-                    {pillar.description}
+                    {session.description}
                   </p>
                 </div>
+
                 <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-line/60">
-                  {pillar.tags.map((tag) => (
+                  {session.tags.map((tag) => (
                     <span
                       key={tag}
-                      onClick={() => setSearchQuery(tag)}
-                      className={`inline-flex items-center rounded-md border px-1.5 py-0.5 font-mono text-[10px] cursor-pointer transition-colors ${
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setSearchQuery(tag);
+                      }}
+                      className={`inline-flex items-center rounded-md border px-1.5 py-0.5 font-mono text-[10px] transition-colors ${
                         searchQuery.toLowerCase() && tag.toLowerCase().includes(searchQuery.toLowerCase())
                           ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
                           : "border-border bg-muted/50 text-muted-foreground hover:border-foreground/30 hover:text-foreground"
                       }`}
                     >
-                      {tag}
+                      #{tag}
                     </span>
                   ))}
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         ) : (
           <div className="flex min-h-[140px] flex-col items-center justify-center rounded-lg border border-dashed border-line bg-muted/20 p-6 text-center">
             <p className="font-handwritten text-2xl text-muted-foreground">
-              No learning topics found matching &quot;{searchQuery}&quot;
+              No sessions found matching &quot;{searchQuery}&quot;
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Try searching for &quot;Python&quot;, &quot;C++&quot;, &quot;Next.js&quot;, or &quot;Figma&quot;.
+              Try searching for &quot;Word2Vec&quot;, &quot;GloVe&quot;, &quot;POS Tagging&quot;, or &quot;Tokenization&quot;.
             </p>
             <button
               type="button"
