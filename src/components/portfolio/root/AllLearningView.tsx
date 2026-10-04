@@ -1,5 +1,4 @@
 import React from "react";
-import { StackSection } from "./StackSection";
 
 export function AllLearningView() {
   const learningPillars = [
@@ -129,11 +128,6 @@ export function AllLearningView() {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Complete Interactive Tech Stack Section */}
-      <div className="border-t border-line">
-        <StackSection />
       </div>
     </div>
   );
