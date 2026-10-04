@@ -15,7 +15,7 @@ interface SessionMeta {
 const defaultSessions: SessionMeta[] = [
   {
     id: "sesi-1",
-    sessionNum: "Session 01",
+    sessionNum: "01",
     title: "Text Tokenization & Stopwords Filtering",
     topic: "Text Preprocessing Foundations",
     githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%201",
@@ -25,7 +25,7 @@ const defaultSessions: SessionMeta[] = [
   },
   {
     id: "sesi-2",
-    sessionNum: "Session 02",
+    sessionNum: "02",
     title: "Stemming & WordNet Lemmatization",
     topic: "Morphological Analysis",
     githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%202",
@@ -35,7 +35,7 @@ const defaultSessions: SessionMeta[] = [
   },
   {
     id: "sesi-3",
-    sessionNum: "Session 03",
+    sessionNum: "03",
     title: "POS Tagging, Frequency Distribution & NER",
     topic: "Syntactic & Semantic Tagging",
     githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%203",
@@ -45,7 +45,7 @@ const defaultSessions: SessionMeta[] = [
   },
   {
     id: "sesi-4",
-    sessionNum: "Session 04",
+    sessionNum: "04",
     title: "End-to-End NLP Preprocessing & Emotion Classifier",
     topic: "Pipeline & Model Serialization",
     githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%204",
@@ -55,7 +55,7 @@ const defaultSessions: SessionMeta[] = [
   },
   {
     id: "sesi-8",
-    sessionNum: "Session 08",
+    sessionNum: "08",
     title: "Language Modeling with N-Grams & Cosine Similarity",
     topic: "Vectorization & Document Distance",
     githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%208",
@@ -65,7 +65,7 @@ const defaultSessions: SessionMeta[] = [
   },
   {
     id: "sesi-9",
-    sessionNum: "Session 09",
+    sessionNum: "09",
     title: "Dense Word Embeddings (Word2Vec & Pre-trained GloVe)",
     topic: "Vector Semantics & Word Math",
     githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%209",
@@ -75,7 +75,7 @@ const defaultSessions: SessionMeta[] = [
   },
   {
     id: "sesi-11",
-    sessionNum: "Session 11",
+    sessionNum: "11",
     title: "Real-World Job Posting Text Classifier (UAP Capstone)",
     topic: "Comprehensive ML Project",
     githubUrl: "https://github.com/FidelCristopher/lab-nlp/tree/main/Sesi%2011",
@@ -274,7 +274,7 @@ export function AllLearningView() {
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-muted text-muted-foreground border border-border font-semibold">
-                        {session.sessionNum}
+                        {session.sessionNum.replace(/session\s*/i, "")}
                       </span>
                       <span className="text-[11px] font-mono text-emerald-400/90">
                         {session.topic}
