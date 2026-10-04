@@ -552,7 +552,7 @@ export function AllLearningView() {
                   : "border border-border bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
-              CompVis Lab ({compVisList.length})
+              CompVis ({compVisList.length})
             </button>
             <button
               type="button"
@@ -563,7 +563,7 @@ export function AllLearningView() {
                   : "border border-border bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
-              Speech Lab ({speechList.length})
+              Speech ({speechList.length})
             </button>
             <button
               type="button"
@@ -574,7 +574,7 @@ export function AllLearningView() {
                   : "border border-border bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
-              NLP Lab ({nlpList.length})
+              NLP ({nlpList.length})
             </button>
             <button
               type="button"
@@ -585,7 +585,7 @@ export function AllLearningView() {
                   : "border border-border bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
-              CompBio Lab ({compBioList.length})
+              CompBio ({compBioList.length})
             </button>
           </div>
 
@@ -614,16 +614,16 @@ export function AllLearningView() {
           <div>
             <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
               {activeCategory === "all"
-                ? "Coursework Modules & Lab Code"
+                ? "Coursework Modules & Source Code"
                 : activeCategory === "speechrecognition"
-                ? "Speech Recognition (lab-speechrecognition)"
+                ? "Speech Recognition"
                 : activeCategory === "deeplearning"
-                ? "Deep Learning (lab-deeplearning)"
+                ? "Deep Learning"
                 : activeCategory === "compvis"
-                ? "Computer Vision (lab-compvis)"
+                ? "Computer Vision"
                 : activeCategory === "nlp"
-                ? "Natural Language Processing (lab-nlp)"
-                : "Computational Biology (lab-compbio)"}
+                ? "Natural Language Processing"
+                : "Computational Biology"}
             </h3>
             <p className="text-xs text-muted-foreground mt-0.5">
               Click any card to inspect the corresponding Python script, Jupyter notebook, and source code on GitHub.
