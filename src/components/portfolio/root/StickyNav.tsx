@@ -43,6 +43,20 @@ export function StickyNav({ activeIndex = 0 }: { activeIndex?: number }) {
       )
     },
     {
+      id: "learning",
+      label: "My Learning",
+      href: "/#stack",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="size-4 shrink-0 transition-transform duration-200 sm:size-4.5 group-hover:scale-105 group-hover:-translate-y-0.5">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" fill="currentColor" opacity="0.08"></path>
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path>
+          <path d="M8 7h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"></path>
+          <path d="M8 11h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"></path>
+          <path d="M8 15h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"></path>
+        </svg>
+      )
+    },
+    {
       id: "chat",
       label: "Chat",
       href: "https://wa.me/6285155487647",
@@ -61,7 +75,7 @@ export function StickyNav({ activeIndex = 0 }: { activeIndex?: number }) {
 
   return (
     <nav className="sticky top-0 z-40 -mt-px border border-line bg-card/95 backdrop-blur-md max-md:border-x-0 h-14" aria-label="Main Navigation">
-      <div className="relative grid h-full w-full grid-cols-4">
+      <div className="relative grid h-full w-full grid-cols-5">
         {navItems.map((item, index) => {
           const isActive = activeTab === index;
           return (
@@ -72,12 +86,12 @@ export function StickyNav({ activeIndex = 0 }: { activeIndex?: number }) {
               rel={item.target ? "noopener noreferrer" : undefined}
               onClick={() => setActiveTab(index)}
               aria-label={item.label}
-              className={`group relative flex h-full min-w-0 cursor-pointer items-center justify-center gap-1.5 px-2 text-xs font-medium transition-colors duration-200 select-none focus-visible:z-1 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:text-sm ${
+              className={`group relative flex h-full min-w-0 cursor-pointer items-center justify-center gap-1 sm:gap-1.5 px-1 sm:px-2 text-xs font-medium transition-colors duration-200 select-none focus-visible:z-1 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:text-sm ${
                 isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {item.icon}
-              <span className="font-sans whitespace-nowrap overflow-hidden text-ellipsis">
+              <span className="font-sans whitespace-nowrap overflow-hidden text-ellipsis text-[11px] sm:text-sm">
                 {item.label}
               </span>
             </Link>
@@ -87,10 +101,10 @@ export function StickyNav({ activeIndex = 0 }: { activeIndex?: number }) {
         {/* Sliding Active Line Indicator */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 w-1/4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="pointer-events-none absolute inset-y-0 left-0 w-1/5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
           style={{ transform: `translate3d(${activeTab * 100}%, 0, 0)` }}
         >
-          <span className="absolute bottom-0 h-0.5 bg-foreground" style={{ insetInline: "min(1.5rem, 20%)" }}></span>
+          <span className="absolute bottom-0 h-0.5 bg-foreground" style={{ insetInline: "min(1rem, 20%)" }}></span>
         </span>
       </div>
     </nav>
