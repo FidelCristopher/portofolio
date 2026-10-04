@@ -4,7 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 
 interface SessionMeta {
   id: string;
-  category: "nlp" | "compbio" | "compvis";
+  category: "nlp" | "compbio" | "compvis" | "deeplearning";
   sessionNum: string;
   title: string;
   topic: string;
@@ -253,12 +253,60 @@ const defaultCompVisSessions: SessionMeta[] = [
   }
 ];
 
+const defaultDeepLearningSessions: SessionMeta[] = [
+  {
+    id: "deeplearning-sesi-1",
+    category: "deeplearning",
+    sessionNum: "01",
+    title: "Dataset Preprocessing & Exploratory Data Analysis (EDA)",
+    topic: "Data Preparation & Neural Inputs",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/Sesi%201",
+    description:
+      "Tabular dataset preparation for deep learning: loading banking churn and credit records (bank.csv), feature selection, data cleaning, and statistical distribution analysis for neural network input shaping.",
+    tags: ["DeepLearning", "EDA", "Data Preprocessing", "Pandas", "NumPy", "Python"]
+  },
+  {
+    id: "deeplearning-sesi-2",
+    category: "deeplearning",
+    sessionNum: "02",
+    title: "Multilayer Perceptron (MLP) & Feedforward Neural Networks",
+    topic: "Deep Feedforward Architecture",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/Sesi%202",
+    description:
+      "Designing and training a Multi-Layer Perceptron (MLP) with TensorFlow/Keras: feature standardization with StandardScaler, Dense hidden layers with ReLU activations, Adam optimization, and MSE loss evaluation.",
+    tags: ["DeepLearning", "MLP", "Neural Networks", "TensorFlow", "Keras", "Dense Layers", "Adam"]
+  },
+  {
+    id: "deeplearning-sesi-3",
+    category: "deeplearning",
+    sessionNum: "03",
+    title: "Convolutional Neural Networks (CNN) for Image Classification",
+    topic: "2D Feature Learning & Pooling",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/Sesi%203",
+    description:
+      "Multi-class image classification with 2D Convolutional Neural Networks (LeNet/CNN): Conv2D feature learning, MaxPooling spatial downsampling, Flatten layers, Softmax probabilities, and cross-entropy loss tracking.",
+    tags: ["DeepLearning", "CNN", "Conv2D", "Image Classification", "TensorFlow", "Keras", "Computer Vision"]
+  },
+  {
+    id: "deeplearning-sesi-4",
+    category: "deeplearning",
+    sessionNum: "04",
+    title: "Sequence-to-Sequence (Seq2Seq) Architecture with Encoder-Decoder",
+    topic: "Recurrent & Sequence Modeling",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/Sesi%204",
+    description:
+      "Advanced sequence-to-sequence neural architecture: implementing custom sub-classed TensorFlow Keras Encoder with dense word embeddings and recurrent neural units for sequence transduction and language translation.",
+    tags: ["DeepLearning", "Seq2Seq", "Encoder Decoder", "RNN", "Embeddings", "TensorFlow", "NLP"]
+  }
+];
+
 export function AllLearningView() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<"all" | "nlp" | "compbio" | "compvis">("all");
+  const [activeCategory, setActiveCategory] = useState<"all" | "deeplearning" | "compvis" | "nlp" | "compbio">("all");
   const [nlpList, setNlpList] = useState<SessionMeta[]>(defaultNlpSessions);
   const [compBioList, setCompBioList] = useState<SessionMeta[]>(defaultCompBioSessions);
   const [compVisList, setCompVisList] = useState<SessionMeta[]>(defaultCompVisSessions);
+  const [deepLearningList, setDeepLearningList] = useState<SessionMeta[]>(defaultDeepLearningSessions);
 
   useEffect(() => {
     let isMounted = true;
@@ -270,6 +318,7 @@ export function AllLearningView() {
         if (data.nlpSessions && isMounted) setNlpList(data.nlpSessions);
         if (data.compBioSessions && isMounted) setCompBioList(data.compBioSessions);
         if (data.compVisSessions && isMounted) setCompVisList(data.compVisSessions);
+        if (data.deepLearningSessions && isMounted) setDeepLearningList(data.deepLearningSessions);
       } catch (err) {
         // silent fallback
       }
@@ -281,8 +330,8 @@ export function AllLearningView() {
   }, []);
 
   const allSessions = useMemo(() => {
-    return [...nlpList, ...compBioList, ...compVisList];
-  }, [nlpList, compBioList, compVisList]);
+    return [...deepLearningList, ...compVisList, ...nlpList, ...compBioList];
+  }, [deepLearningList, compVisList, nlpList, compBioList]);
 
   // Filter based on search and category
   const filteredSessions = useMemo(() => {
@@ -321,6 +370,24 @@ export function AllLearningView() {
             <p className="text-xs text-muted-foreground mt-0.5">
               Live lab modules automatically synced from{" "}
               <a
+                href="https://github.com/FidelCristopher/lab-deeplearning"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline hover:text-purple-400 font-mono"
+              >
+                lab-deeplearning
+              </a>
+              {", "}
+              <a
+                href="https://github.com/FidelCristopher/lab-compvis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline hover:text-amber-400 font-mono"
+              >
+                lab-compvis
+              </a>
+              {", "}
+              <a
                 href="https://github.com/FidelCristopher/lab-nlp"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -328,23 +395,14 @@ export function AllLearningView() {
               >
                 lab-nlp
               </a>
-              {", "}
+              {" & "}
               <a
                 href="https://github.com/FidelCristopher/lab-compbio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground underline hover:text-emerald-400 font-mono"
+                className="text-foreground underline hover:text-sky-400 font-mono"
               >
                 lab-compbio
-              </a>
-              {" & "}
-              <a
-                href="https://github.com/FidelCristopher/lab-compvis"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground underline hover:text-emerald-400 font-mono"
-              >
-                lab-compvis
               </a>
             </p>
           </div>
@@ -358,7 +416,7 @@ export function AllLearningView() {
       <div className="grid grid-cols-2 gap-px border-b border-line bg-line sm:grid-cols-4">
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Core Domains</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">NLP, Vision &amp; Bio</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">Deep Learning, Vision, NLP &amp; Bio</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Completed Modules</span>
@@ -366,11 +424,11 @@ export function AllLearningView() {
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Core Toolkits</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">OpenCV, NLTK, Biopython</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">TensorFlow, PyTorch, OpenCV, NLTK</span>
         </div>
         <div className="flex flex-col gap-1 bg-background p-4">
           <span className="text-xs text-muted-foreground">Repositories</span>
-          <span className="font-mono text-base font-bold tracking-tight text-foreground">3 Repos (Live Sync)</span>
+          <span className="font-mono text-base font-bold tracking-tight text-foreground">4 Repos (Live Sync)</span>
         </div>
       </div>
 
@@ -398,7 +456,7 @@ export function AllLearningView() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search topic or tag (e.g. OpenCV, SIFT, Canny, BioPython, DNA, Word2Vec, GloVe)..."
+            placeholder="Search topic or tag (e.g. DeepLearning, CNN, MLP, Seq2Seq, OpenCV, SIFT, BioPython, NLTK)..."
             className="w-full rounded-lg border border-line bg-background py-2.5 pl-10 pr-9 text-sm text-foreground placeholder:text-muted-foreground/60 transition-all outline-none focus:border-foreground/30 focus:ring-2 focus:ring-foreground/10"
           />
           {searchQuery && (
@@ -426,6 +484,17 @@ export function AllLearningView() {
               }`}
             >
               All Modules ({allSessions.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("deeplearning")}
+              className={`rounded-md px-2.5 py-1 text-xs font-mono transition-colors ${
+                activeCategory === "deeplearning"
+                  ? "bg-purple-500 text-white font-semibold"
+                  : "border border-border bg-background text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Deep Learning ({deepLearningList.length})
             </button>
             <button
               type="button"
@@ -463,14 +532,14 @@ export function AllLearningView() {
           </div>
 
           <div className="flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
-            {["OpenCV", "SIFT", "Canny", "BioPython", "Word2Vec", "GloVe", "Alignment", "Haar Cascades"].map((suggest) => (
+            {["CNN", "MLP", "Seq2Seq", "TensorFlow", "OpenCV", "SIFT", "BioPython", "Word2Vec"].map((suggest) => (
               <button
                 key={suggest}
                 type="button"
                 onClick={() => setSearchQuery(suggest)}
                 className={`rounded-md border px-1.5 py-0.5 font-mono text-[10px] transition-colors ${
                   searchQuery.toLowerCase() === suggest.toLowerCase()
-                    ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
+                    ? "border-purple-500 bg-purple-500/10 text-purple-400"
                     : "border-border bg-background text-muted-foreground hover:border-foreground/30 hover:text-foreground"
                 }`}
               >
@@ -488,6 +557,8 @@ export function AllLearningView() {
             <h3 className="font-handwritten text-2xl font-semibold tracking-tight text-foreground">
               {activeCategory === "all"
                 ? "Coursework Modules & Lab Code"
+                : activeCategory === "deeplearning"
+                ? "Deep Learning Lab (lab-deeplearning)"
                 : activeCategory === "compvis"
                 ? "Computer Vision (lab-compvis)"
                 : activeCategory === "nlp"
@@ -507,7 +578,9 @@ export function AllLearningView() {
           <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 rounded-lg overflow-hidden">
             {filteredSessions.map((session) => {
               const topicColor =
-                session.category === "compvis"
+                session.category === "deeplearning"
+                  ? "text-purple-400/90"
+                  : session.category === "compvis"
                   ? "text-amber-400/90"
                   : session.category === "compbio"
                   ? "text-sky-400/90"
@@ -583,7 +656,7 @@ export function AllLearningView() {
               No modules found matching &quot;{searchQuery}&quot;
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Try searching for &quot;OpenCV&quot;, &quot;SIFT&quot;, &quot;BioPython&quot;, &quot;DNA&quot;, or &quot;Word2Vec&quot;.
+              Try searching for &quot;CNN&quot;, &quot;MLP&quot;, &quot;Seq2Seq&quot;, &quot;OpenCV&quot;, &quot;BioPython&quot;, or &quot;Word2Vec&quot;.
             </p>
             <button
               type="button"

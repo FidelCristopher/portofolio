@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export interface SessionMeta {
   id: string;
-  category: "nlp" | "compbio" | "compvis";
+  category: "nlp" | "compbio" | "compvis" | "deeplearning";
   sessionNum: string;
   title: string;
   topic: string;
@@ -254,9 +254,57 @@ const defaultCompVisSessions: Record<string, SessionMeta> = {
   }
 };
 
+// Curated knowledge base for Deep Learning lab sessions
+const defaultDeepLearningSessions: Record<string, SessionMeta> = {
+  "Sesi 1": {
+    id: "deeplearning-sesi-1",
+    category: "deeplearning",
+    sessionNum: "01",
+    title: "Dataset Preprocessing & Exploratory Data Analysis (EDA)",
+    topic: "Data Preparation & Neural Inputs",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/Sesi%201",
+    description:
+      "Tabular dataset preparation for deep learning: loading banking churn and credit records (bank.csv), feature selection, data cleaning, and statistical distribution analysis for neural network input shaping.",
+    tags: ["DeepLearning", "EDA", "Data Preprocessing", "Pandas", "NumPy", "Python"]
+  },
+  "Sesi 2": {
+    id: "deeplearning-sesi-2",
+    category: "deeplearning",
+    sessionNum: "02",
+    title: "Multilayer Perceptron (MLP) & Feedforward Neural Networks",
+    topic: "Deep Feedforward Architecture",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/Sesi%202",
+    description:
+      "Designing and training a Multi-Layer Perceptron (MLP) with TensorFlow/Keras: feature standardization with StandardScaler, Dense hidden layers with ReLU activations, Adam optimization, and MSE loss evaluation.",
+    tags: ["DeepLearning", "MLP", "Neural Networks", "TensorFlow", "Keras", "Dense Layers", "Adam"]
+  },
+  "Sesi 3": {
+    id: "deeplearning-sesi-3",
+    category: "deeplearning",
+    sessionNum: "03",
+    title: "Convolutional Neural Networks (CNN) for Image Classification",
+    topic: "2D Feature Learning & Pooling",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/Sesi%203",
+    description:
+      "Multi-class image classification with 2D Convolutional Neural Networks (LeNet/CNN): Conv2D feature learning, MaxPooling spatial downsampling, Flatten layers, Softmax probabilities, and cross-entropy loss tracking.",
+    tags: ["DeepLearning", "CNN", "Conv2D", "Image Classification", "TensorFlow", "Keras", "Computer Vision"]
+  },
+  "Sesi 4": {
+    id: "deeplearning-sesi-4",
+    category: "deeplearning",
+    sessionNum: "04",
+    title: "Sequence-to-Sequence (Seq2Seq) Architecture with Encoder-Decoder",
+    topic: "Recurrent & Sequence Modeling",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/Sesi%204",
+    description:
+      "Advanced sequence-to-sequence neural architecture: implementing custom sub-classed TensorFlow Keras Encoder with dense word embeddings and recurrent neural units for sequence transduction and language translation.",
+    tags: ["DeepLearning", "Seq2Seq", "Encoder Decoder", "RNN", "Embeddings", "TensorFlow", "NLP"]
+  }
+};
+
 async function fetchRepoSessions(
   repoName: string,
-  category: "nlp" | "compbio" | "compvis",
+  category: "nlp" | "compbio" | "compvis" | "deeplearning",
   curatedMap: Record<string, SessionMeta>
 ): Promise<SessionMeta[]> {
   try {
@@ -295,7 +343,8 @@ async function fetchRepoSessions(
       const categoryLabels = {
         nlp: "NLP Advanced Module",
         compbio: "Computational Biology Module",
-        compvis: "Computer Vision Module"
+        compvis: "Computer Vision Module",
+        deeplearning: "Deep Learning Module"
       };
 
       return {
@@ -306,7 +355,7 @@ async function fetchRepoSessions(
         topic: categoryLabels[category],
         githubUrl: dir.html_url || `https://github.com/FidelCristopher/${repoName}/tree/main/${encodeURIComponent(dir.name)}`,
         description: `Practical implementation and source code experiments for ${dir.name}. Automatically synchronized from repository FidelCristopher/${repoName}.`,
-        tags: [category.toUpperCase(), "Python", "Computer Science", cleanTitle]
+        tags: [category.toUpperCase(), "Python", "Deep Learning", cleanTitle]
       };
     });
 
@@ -323,10 +372,11 @@ async function fetchRepoSessions(
 }
 
 export async function GET() {
-  const [nlpSessions, compBioSessions, compVisSessions] = await Promise.all([
+  const [nlpSessions, compBioSessions, compVisSessions, deepLearningSessions] = await Promise.all([
     fetchRepoSessions("lab-nlp", "nlp", defaultNlpSessions),
     fetchRepoSessions("lab-compbio", "compbio", defaultCompBioSessions),
-    fetchRepoSessions("lab-compvis", "compvis", defaultCompVisSessions)
+    fetchRepoSessions("lab-compvis", "compvis", defaultCompVisSessions),
+    fetchRepoSessions("lab-deeplearning", "deeplearning", defaultDeepLearningSessions)
   ]);
 
   return NextResponse.json({
@@ -334,6 +384,7 @@ export async function GET() {
     nlpSessions,
     compBioSessions,
     compVisSessions,
-    allSessions: [...nlpSessions, ...compBioSessions, ...compVisSessions]
+    deepLearningSessions,
+    allSessions: [...nlpSessions, ...compBioSessions, ...compVisSessions, ...deepLearningSessions]
   });
 }
