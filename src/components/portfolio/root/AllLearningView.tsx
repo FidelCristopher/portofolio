@@ -380,9 +380,6 @@ export function AllLearningView() {
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-muted text-muted-foreground border border-border font-semibold">
-                        {session.sessionNum}
-                      </span>
                       <span className={`text-[11px] font-mono ${session.category === "compbio" ? "text-sky-400/90" : "text-emerald-400/90"}`}>
                         {session.topic}
                       </span>
