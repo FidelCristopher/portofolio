@@ -16,7 +16,7 @@ export function ProjectsSection() {
       <header data-slot="panel-header" className="border-b border-line px-4 has-data-[slot=panel-description]:*:data-[slot=panel-title]:border-b has-data-[slot=panel-description]:*:data-[slot=panel-title]:border-line">
         <div className="flex items-center justify-between gap-3">
           <h2 data-slot="panel-title" className="font-handwritten text-3xl font-semibold tracking-tight">
-            Projects<sup className="top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground">(2)</sup>
+            Projects<sup className="top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground">(3)</sup>
           </h2>
           <Link className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/projects">
             View all
@@ -60,7 +60,39 @@ export function ProjectsSection() {
           </a>
         </div>
 
-        {/* Project 2: Matcha Simulation */}
+        {/* Project 2: RailSense */}
+        <div className="border-b border-line">
+          <a
+            className="flex items-center pr-2 transition-colors duration-200 ease-out hover:bg-accent-muted"
+            href="https://github.com/FidelCristopher/RailSense"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="flex w-15 shrink-0 items-center justify-center">
+              <div className="flex size-7 items-center justify-center rounded-lg border border-border select-none bg-black p-1 ring-1 ring-line">
+                <img src="/projects/railsense/logo.png" alt="RailSense" className="size-full object-contain" />
+              </div>
+            </div>
+            <div className="flex-1 border-l border-dashed border-line p-4 pr-2">
+              <p className="mb-1 leading-snug font-medium text-balance">
+                RailSense – Intelligent Railway Interlocking System
+              </p>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-sm text-muted-foreground">2026</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">YOLOv8-seg</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Computer Vision</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">FastAPI</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">PyTorch</span>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4 text-muted-foreground" aria-hidden="true">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        {/* Project 3: Matcha Simulation */}
         <div className="border-b border-line">
           <a
             className="flex items-center pr-2 transition-colors duration-200 ease-out hover:bg-accent-muted"
