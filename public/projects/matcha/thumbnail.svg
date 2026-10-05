@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250" fill="none">
+  <defs>
+    <linearGradient id="bgMatcha" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#142612" />
+      <stop offset="50%" stop-color="#23421f" />
+      <stop offset="100%" stop-color="#0e1a0d" />
+    </linearGradient>
+    <linearGradient id="glowMatcha" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#84cc16" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#4d7c0f" stop-opacity="0.1" />
+    </linearGradient>
+    <radialGradient id="bubbleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#bef264" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#65a30d" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="400" height="250" rx="16" fill="url(#bgMatcha)" />
+  
+  <!-- Subtle Grid Lines -->
+  <path d="M0 50h400M0 100h400M0 150h400M0 200h400M50 0v250M100 0v250M150 0v250M200 0v250M250 0v250M300 0v250M350 0v250" stroke="#84cc16" stroke-opacity="0.05" stroke-width="1" />
+
+  <!-- Ambient Light Center -->
+  <circle cx="200" cy="125" r="90" fill="url(#bubbleGlow)" />
+
+  <!-- 3D Isometric Viewport Cube & Teacup Abstract -->
+  <g transform="translate(200, 110)">
+    <!-- 3D Glass / Cup Base -->
+    <path d="M-40 40 L-25 75 C-20 85 20 85 25 75 L40 40 Z" fill="#65a30d" fill-opacity="0.4" stroke="#a3e635" stroke-width="2" />
+    <!-- Liquid Layers -->
+    <path d="M-34 50 C-15 54 15 54 34 50 L27 70 C15 75 -15 75 -27 70 Z" fill="#84cc16" fill-opacity="0.7" />
+    
+    <!-- 3D Cube / Wireframe Showcase Indicator -->
+    <path d="M0 -45 L45 -20 L45 30 L0 55 L-45 30 L-45 -20 Z" stroke="#bef264" stroke-width="1.8" stroke-dasharray="4 2" fill="none" opacity="0.6" />
+    <path d="M0 -45 L0 55" stroke="#bef264" stroke-width="1.2" opacity="0.4" />
+    <path d="M-45 -20 L0 5 L45 -20" stroke="#bef264" stroke-width="1.2" opacity="0.5" />
+    
+    <!-- Floating Sparkles / Carbonation -->
+    <circle cx="-25" cy="-10" r="3" fill="#ecfccb" />
+    <circle cx="30" cy="-25" r="4" fill="#bef264" />
+    <circle cx="-15" cy="20" r="2.5" fill="#f7fee7" />
+    <circle cx="22" cy="15" r="2" fill="#d9f99d" />
+    <circle cx="35" cy="5" r="3" fill="#a3e635" />
+  </g>
+
+  <!-- Clean Title / Branding -->
+  <text x="200" y="215" text-anchor="middle" font-family="'GeistMono', ui-monospace, monospace" font-size="12" font-weight="700" fill="#bef264" letter-spacing="2">
+    3D SPARKLING MATCHA
+  </text>
+  <text x="200" y="232" text-anchor="middle" font-family="'GeistSans', sans-serif" font-size="10" fill="#a1a1aa" letter-spacing="0.5">
+    WebGL &bull; 3D Model-Viewer Simulation
+  </text>
+</svg>
