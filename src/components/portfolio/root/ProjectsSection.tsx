@@ -1,7 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-export function ProjectsSection() {
+interface ProjectsSectionProps {
+  onViewAllProjects?: () => void;
+}
+
+export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
   return (
     <section data-slot="panel" className="relative z-1 -mt-px border border-line bg-card max-md:border-x-0" id="projects">
       <aside aria-hidden="true" className="pointer-events-none absolute z-10 hidden w-40 flex-col gap-1 xl:flex left-[-11rem] items-end top-14">
@@ -18,13 +22,27 @@ export function ProjectsSection() {
           <h2 data-slot="panel-title" className="font-handwritten text-3xl font-semibold tracking-tight">
             Projects<sup className="top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground">(4)</sup>
           </h2>
-          <Link className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/projects">
-            View all
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
-              <path d="M7 7h10v10"></path>
-              <path d="M7 17 17 7"></path>
-            </svg>
-          </Link>
+          {onViewAllProjects ? (
+            <button
+              type="button"
+              onClick={onViewAllProjects}
+              className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+            >
+              View all
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </button>
+          ) : (
+            <Link className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/projects">
+              View all
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4" aria-hidden="true">
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </Link>
+          )}
         </div>
       </header>
       <div data-state="open" data-slot="collapsible" className="group/collapsible">
