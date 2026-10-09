@@ -12,17 +12,23 @@ export function StackSection() {
       <div className="relative [--badge-height:--spacing(6)] [--col-left-width:--spacing(48)]">
         <div className="pointer-events-none absolute inset-y-0 left-(--col-left-width) -z-1 w-px bg-[linear-gradient(to_bottom,var(--line)_4px,transparent_2px)] bg-size-[1px_6px] bg-repeat-y max-sm:hidden" aria-hidden="true"></div>
 
-        {/* 01: AI, Vision & Audio */}
+        {/* 01: AI, Vision, Audio & LLM */}
         <div className="grid items-start gap-y-2 border-b border-line py-4 last:border-none sm:grid-cols-[var(--col-left-width)_1fr]">
           <div className="pl-4 text-sm/[--badge-height] text-muted-foreground">
             <span className="mr-1.5 font-mono text-muted-foreground select-none">01</span>
-            AI, Vision &amp; Audio
+            AI, Vision, Audio &amp; LLM
           </div>
           <ul className="flex flex-wrap gap-1.5 px-4">
             <li className="flex">
               <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-muted/60 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border transition-colors hover:bg-muted/90 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="/icons/tech-stack-v1.svg#python"></use></svg>
                 Python
+              </a>
+            </li>
+            <li className="flex">
+              <a href="https://ai.google.dev/" target="_blank" rel="noopener noreferrer" className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-muted/60 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border transition-colors hover:bg-muted/90 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="/icons/tech-stack-v1.svg#gemini"></use></svg>
+                Gemini API / LLM
               </a>
             </li>
             <li className="flex">
@@ -180,13 +186,21 @@ export function StackSection() {
           </ul>
         </div>
 
-        {/* 04: DevOps & Environments */}
+        {/* 04: DevOps, Agent Tooling & Environments */}
         <div className="grid items-start gap-y-2 border-b border-line py-4 last:border-none sm:grid-cols-[var(--col-left-width)_1fr]">
           <div className="pl-4 text-sm/[--badge-height] text-muted-foreground">
             <span className="mr-1.5 font-mono text-muted-foreground select-none">04</span>
-            DevOps &amp; Tools
+            DevOps &amp; Agent Tooling
           </div>
           <ul className="flex flex-wrap gap-1.5 px-4">
+            <li className="flex">
+              <a href="https://agentskills.io/" target="_blank" rel="noopener noreferrer" className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-muted/60 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border transition-colors hover:bg-muted/90 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bot">
+                  <path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path>
+                </svg>
+                Agent Skills &amp; IPC
+              </a>
+            </li>
             <li className="flex">
               <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-muted/60 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border transition-colors hover:bg-muted/90 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="/icons/tech-stack-v1.svg#docker"></use></svg>

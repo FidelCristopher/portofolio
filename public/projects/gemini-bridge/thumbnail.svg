@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250" fill="none">
+  <defs>
+    <linearGradient id="bgGemini" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0c29" />
+      <stop offset="50%" stop-color="#1b1442" />
+      <stop offset="100%" stop-color="#0a081a" />
+    </linearGradient>
+    <linearGradient id="sparkGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="50%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#4f46e5" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="250" rx="16" fill="url(#bgGemini)" />
+
+  <!-- Grid Pattern -->
+  <path d="M0 50h400M0 100h400M0 150h400M0 200h400M50 0v250M100 0v250M150 0v250M200 0v250M250 0v250M300 0v250M350 0v250" stroke="#818cf8" stroke-opacity="0.05" stroke-width="1" />
+
+  <!-- Center Ambient Radial Glow -->
+  <circle cx="200" cy="115" r="90" fill="url(#centerGlow)" />
+
+  <!-- AI Gemini 4-Point Star Sparkle Graphic -->
+  <g transform="translate(200, 105)">
+    <!-- Bridge Connection Waves / Sockets -->
+    <path d="M-90 0 C-45 -35 -45 35 0 0 C45 -35 45 35 90 0" stroke="#818cf8" stroke-width="1.8" stroke-dasharray="4 3" opacity="0.6" fill="none" />
+    
+    <!-- Central Gemini Star Icon -->
+    <path d="M0 -42 C2 -12 12 -2 42 0 C12 2 2 12 0 42 C-2 12 -12 2 -42 0 C-12 -2 -2 -12 0 -42 Z" fill="url(#sparkGlow)" />
+    
+    <!-- Inner Core Core Glow -->
+    <circle cx="0" cy="0" r="6" fill="#ffffff" />
+    
+    <!-- Terminal Code Prompt Node Left -->
+    <g transform="translate(-75, 0)">
+      <rect x="-16" y="-12" width="32" height="24" rx="6" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.4" />
+      <text x="0" y="4" text-anchor="middle" font-family="'GeistMono', monospace" font-size="11" font-weight="700" fill="#a5b4fc">&gt;_</text>
+    </g>
+
+    <!-- 3D Desktop Software Viewport Node Right -->
+    <g transform="translate(75, 0)">
+      <rect x="-16" y="-12" width="32" height="24" rx="6" fill="#1e1b4b" stroke="#c084fc" stroke-width="1.4" />
+      <path d="M-6 4 L0 -6 L6 4 Z" stroke="#e9d5ff" stroke-width="1.2" fill="none" />
+    </g>
+  </g>
+
+  <!-- Title & Subtitle -->
+  <text x="200" y="208" text-anchor="middle" font-family="'GeistMono', ui-monospace, monospace" font-size="12" font-weight="700" fill="#c7d2fe" letter-spacing="2">
+    GEMINI DESKTOP BRIDGE
+  </text>
+  <text x="200" y="226" text-anchor="middle" font-family="'GeistSans', sans-serif" font-size="10" fill="#94a3b8" letter-spacing="0.5">
+    AI Agent Skill &bull; Real-Time Socket IPC Protocol
+  </text>
+</svg>

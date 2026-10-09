@@ -20,7 +20,7 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
       <header data-slot="panel-header" className="border-b border-line px-4 has-data-[slot=panel-description]:*:data-[slot=panel-title]:border-b has-data-[slot=panel-description]:*:data-[slot=panel-title]:border-line">
         <div className="flex items-center justify-between gap-3">
           <h2 data-slot="panel-title" className="font-handwritten text-3xl font-semibold tracking-tight">
-            Projects<sup className="top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground">(4)</sup>
+            Projects<sup className="top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground">(5)</sup>
           </h2>
           {onViewAllProjects ? (
             <button
@@ -110,7 +110,41 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
           </a>
         </div>
 
-        {/* Project 3: RailSense */}
+        {/* Project 3: Gemini Desktop Bridge */}
+        <div className="border-b border-line">
+          <a
+            className="flex items-center pr-2 transition-colors duration-200 ease-out hover:bg-accent-muted"
+            href="https://github.com/FidelCristopher/gemini-desktop-bridge-skill"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="flex w-15 shrink-0 items-center justify-center">
+              <div className="flex size-7 items-center justify-center rounded-lg border border-indigo-500/30 select-none bg-indigo-950/60 p-1 ring-1 ring-line">
+                <svg viewBox="0 0 24 24" fill="none" className="size-4 text-indigo-400">
+                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" opacity="0.8" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex-1 border-l border-dashed border-line p-4 pr-2">
+              <p className="mb-1 leading-snug font-medium text-balance">
+                Gemini Desktop Bridge – Agent Skill &amp; Protocol
+              </p>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-sm text-muted-foreground">2026</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Gemini API</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Agent Skills</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Socket / IPC</span>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4 text-muted-foreground" aria-hidden="true">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        {/* Project 4: RailSense */}
         <div className="border-b border-line">
           <a
             className="flex items-center pr-2 transition-colors duration-200 ease-out hover:bg-accent-muted"
@@ -142,7 +176,7 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
           </a>
         </div>
 
-        {/* Project 4: Matcha Simulation */}
+        {/* Project 5: Matcha Simulation */}
         <div className="border-b border-line">
           <a
             className="flex items-center pr-2 transition-colors duration-200 ease-out hover:bg-accent-muted"
