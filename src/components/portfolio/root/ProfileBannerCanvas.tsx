@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const CHARS = ["·", ":", "0", "1", "3", "5", "8", "9", "X", "B", "#", "0x", "88", "00", "8888"];
 
-interface ZickrianBannerCanvasProps {
+interface ProfileBannerCanvasProps {
   src?: string;
   alt?: string;
   className?: string;
@@ -14,7 +14,7 @@ interface ZickrianBannerCanvasProps {
   scanlines?: boolean;
 }
 
-export function ZickrianBannerCanvas({
+export function ProfileBannerCanvas({
   src = "/bannerfield.webp",
   alt = "Profile Banner",
   className = "",
@@ -22,7 +22,7 @@ export function ZickrianBannerCanvas({
   cellHeight = 10,
   speed = 0.4,
   scanlines = true
-}: ZickrianBannerCanvasProps) {
+}: ProfileBannerCanvasProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [ready, setReady] = useState(false);
@@ -135,7 +135,7 @@ export function ZickrianBannerCanvas({
 
           // Perceived luminance
           const lum = 0.299 * red + 0.587 * green + 0.114 * blue;
-          if (lum < 100) continue; // Thresholding matching zickrian.dev
+          if (lum < 100) continue;
 
           // Mathematical wave shimmer
           const wave = 1.5 * Math.sin(0.12 * c + 1.5 * timeVal) + 1.5 * Math.cos(0.25 * r - 1.2 * timeVal);
@@ -146,7 +146,7 @@ export function ZickrianBannerCanvas({
           const charToRender = CHARS[charIndex] ?? "0";
           const posX = Math.round(c * cellWidth + cellWidth / 2);
 
-          // Color calculation
+          // Color boost calculation
           const isWarm = red > 120 && green > 110 && blue < 155;
           const isCool = blue > red + 10;
           const boost = Math.min(1.25, lum / 160 + 0.2);
@@ -241,7 +241,7 @@ export function ZickrianBannerCanvas({
         style={{ color: "transparent" }}
       />
 
-      {/* The Exact Shimmering Blinking Numbers Canvas */}
+      {/* Shimmering Blinking Numbers Canvas */}
       <canvas
         ref={canvasRef}
         aria-hidden="true"
@@ -250,7 +250,7 @@ export function ZickrianBannerCanvas({
         }`}
       />
 
-      {/* The CRT Scanlines Overlay */}
+      {/* CRT Scanlines Overlay */}
       {scanlines && (
         <div
           aria-hidden="true"
