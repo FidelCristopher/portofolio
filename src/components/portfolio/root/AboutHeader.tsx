@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { OlympusBannerCanvas } from "./OlympusBannerCanvas";
+import { CyberCityBannerCanvas } from "./CyberCityBannerCanvas";
 
 export function AboutHeader() {
   const [copiedDiscord, setCopiedDiscord] = useState(false);
@@ -17,21 +17,21 @@ export function AboutHeader() {
   return (
     <header id="about" className="relative z-1 border-x border-b border-line bg-card max-md:border-x-0"><div className="relative h-44 overflow-hidden border-b border-line sm:h-56"><div className="relative size-full overflow-hidden bg-black select-none">
           <img
-            alt="Olympus & Valhalla Celestial Banner"
+            alt="Cyberpunk City Skyline at Night"
             fetchPriority="high"
             loading="eager"
             decoding="async"
             data-nimg="fill"
-            className="object-cover object-[center_35%] pointer-events-none"
+            className="object-cover object-[center_45%] pointer-events-none"
             style={{"position":"absolute","height":"100%","width":"100%","left":0,"top":0,"right":0,"bottom":0,"color":"transparent"}}
-            src="/banner-olympus.png"
+            src="/banner-cybercity.png"
           />
-          {/* Subtle Dark Shadow Gradient at Bottom & Corners */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black via-black/45 to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-0 bg-radial-[circle_at_center,transparent_55%,rgba(0,0,0,0.35)_100%] z-10" />
+          {/* Dark Shadow Gradient at Bottom & Corners */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black via-black/55 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-0 bg-radial-[circle_at_center,transparent_60%,rgba(0,0,0,0.45)_100%] z-10" />
 
-          {/* Live Drifting Celestial Stardust Animation */}
-          <OlympusBannerCanvas />
+          {/* Live Holographic Code Matrix Animation */}
+          <CyberCityBannerCanvas />
 
           {/* CRT scanline overlay */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.35)_51%)] bg-[length:100%_3px] opacity-25 mix-blend-overlay" />
