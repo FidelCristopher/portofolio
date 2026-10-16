@@ -10,7 +10,7 @@ export function AllContributionsView() {
       description: "AI-powered pregnancy fitness mobile app with real-time computer vision movement detection, 1D-CNN safety classification, and LLM feedback.",
       stars: 1,
       language: "Python",
-      tags: ["Python", "Computer Vision", "1D-CNN", "LLM", "Healthcare AI"]
+      tags: ["Python", "Computer Vision", "1D-CNN", "LLM", "Healthcare Tech"]
     },
     {
       title: "Scientific-Computing",

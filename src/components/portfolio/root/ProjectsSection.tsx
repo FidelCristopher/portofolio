@@ -100,7 +100,7 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Speech Recognition</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">PyQt6</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Offline AI</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Speech DSP</span>
               </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4 text-muted-foreground" aria-hidden="true">
@@ -119,9 +119,10 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
             rel="noopener noreferrer"
           >
             <div className="flex w-15 shrink-0 items-center justify-center">
-              <div className="flex size-7 items-center justify-center rounded-lg border border-indigo-500/30 select-none bg-indigo-950/60 p-1 ring-1 ring-line">
-                <svg viewBox="0 0 24 24" fill="none" className="size-4 text-indigo-400">
-                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" opacity="0.8" />
+              <div className="flex size-7 items-center justify-center rounded-lg border border-border select-none bg-black p-1 ring-1 ring-line">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-terminal size-4 text-muted-foreground">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" x2="20" y1="19" y2="19"></line>
                 </svg>
               </div>
             </div>
@@ -131,8 +132,8 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
               </p>
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-sm text-muted-foreground">2026</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Gemini API</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Agent Skills</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Socket / IPC</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Desktop Protocol</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Socket / IPC</span>
               </div>
