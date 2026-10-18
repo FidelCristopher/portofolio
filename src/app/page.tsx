@@ -76,8 +76,8 @@ export default function Home() {
                 <SectionDivider />
                 <AwardsSection />
                 <SectionDivider />
-                <PublicationsSection />
-                <SectionDivider />
+                {/* <PublicationsSection /> */}
+                {/* <SectionDivider /> */}
                 <CertificationsSection />
                 <SectionDivider />
               </>
