@@ -297,10 +297,32 @@ const defaultDeepLearningSessions: SessionMeta[] = [
     description:
       "Advanced sequence-to-sequence neural architecture: implementing custom sub-classed TensorFlow Keras Encoder with dense word embeddings and recurrent neural units for sequence transduction and language translation.",
     tags: ["DeepLearning", "Seq2Seq", "Encoder Decoder", "RNN", "Embeddings", "TensorFlow", "NLP"]
+  },
+  {
+    id: "deeplearning-latihan",
+    category: "deeplearning",
+    sessionNum: "05",
+    title: "Deep Learning Practical Assessment & Architecture Evaluation",
+    topic: "Comprehensive Model Evaluation",
+    githubUrl: "https://github.com/FidelCristopher/lab-deeplearning/tree/main/latihan",
+    description:
+      "Hands-on deep learning evaluation and architectural problem solving: neural network pipeline implementation, hyperparameter optimization, model validation on multi-feature datasets, and performance analysis.",
+    tags: ["DeepLearning", "Model Evaluation", "Neural Networks", "TensorFlow", "Keras", "Quiz Exam", "Python"]
   }
 ];
 
 const defaultSpeechSessions: SessionMeta[] = [
+  {
+    id: "speech-latihan-sr",
+    category: "speechrecognition",
+    sessionNum: "01",
+    title: "Speech Recognition Practical Assignment & Pipeline Implementation",
+    topic: "End-to-End Speech Pipeline",
+    githubUrl: "https://github.com/FidelCristopher/lab-speechrecognition/tree/main/Latihan_SR",
+    description:
+      "Complete acoustic speech processing assignment: loading raw audio waveforms, preprocessing signal channels, STFT feature extraction, and implementing end-to-end audio classification workflows.",
+    tags: ["SpeechRecognition", "Audio DSP", "Assignment", "STFT", "Feature Extraction", "Librosa", "Python"]
+  },
   {
     id: "speech-sesi-2",
     category: "speechrecognition",
