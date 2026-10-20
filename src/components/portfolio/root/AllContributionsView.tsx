@@ -13,6 +13,15 @@ export function AllContributionsView() {
       tags: ["Python", "Computer Vision", "1D-CNN", "LLM", "Healthcare Tech"]
     },
     {
+      title: "blender-desktop-mcp",
+      repo: "FidelCristopher/blender-desktop-mcp",
+      url: "https://github.com/FidelCristopher/blender-desktop-mcp",
+      description: "Bidirectional Model Context Protocol (MCP) server connecting AI coding agents directly to active Blender desktop sessions via local IPC socket streaming.",
+      stars: 0,
+      language: "Python",
+      tags: ["MCP Server", "Model Context Protocol", "Python", "Blender API", "Socket IPC"]
+    },
+    {
       title: "Scientific-Computing",
       repo: "FidelCristopher/Scientific-Computing",
       url: "https://github.com/FidelCristopher/Scientific-Computing",

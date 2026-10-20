@@ -110,11 +110,11 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
           </a>
         </div>
 
-        {/* Project 3: Gemini Desktop Bridge */}
+        {/* Project 3: Blender Desktop Bridge MCP */}
         <div className="border-b border-line">
           <a
             className="flex items-center pr-2 transition-colors duration-200 ease-out hover:bg-accent-muted"
-            href="https://github.com/FidelCristopher/gemini-desktop-bridge-skill"
+            href="https://github.com/FidelCristopher/blender-desktop-mcp"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -128,13 +128,13 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
             </div>
             <div className="flex-1 border-l border-dashed border-line p-4 pr-2">
               <p className="mb-1 leading-snug font-medium text-balance">
-                Gemini Desktop Bridge – Agent Skill &amp; Protocol
+                Blender Desktop Bridge – Model Context Protocol (MCP) Server
               </p>
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-sm text-muted-foreground">2026</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Socket / IPC</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Desktop Protocol</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">MCP Server</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Model Context Protocol</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python (bpy)</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Socket / IPC</span>
               </div>
             </div>

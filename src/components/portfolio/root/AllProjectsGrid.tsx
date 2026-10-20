@@ -75,37 +75,37 @@ export function AllProjectsGrid() {
           </a>
         </div>
 
-        {/* Project 3: Gemini Desktop Bridge */}
-        <div id="project-gemini-bridge" className="group flex flex-col gap-2 bg-background p-3 transition-[background-color] duration-200 ease-out hover:bg-accent-muted">
+        {/* Project 3: Blender Desktop Bridge MCP */}
+        <div id="project-blender-mcp" className="group flex flex-col gap-2 bg-background p-3 transition-[background-color] duration-200 ease-out hover:bg-accent-muted">
           <a
             className="flex h-full flex-col gap-2 rounded-lg focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
-            href="https://github.com/FidelCristopher/gemini-desktop-bridge-skill"
+            href="https://github.com/FidelCristopher/blender-desktop-mcp"
             target="_blank"
             rel="noopener noreferrer"
           >
             <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-lg border border-line bg-zinc-950 select-none">
               <img
-                alt="Gemini Desktop Bridge Thumbnail"
-                src="/projects/gemini-bridge/thumbnail.svg"
+                alt="Blender Desktop Bridge MCP Thumbnail"
+                src="/projects/blender-mcp/thumbnail.svg"
                 className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
             </div>
             <div className="flex flex-col gap-2 p-2">
               <div className="flex items-start justify-between gap-3">
-                <p className="text-lg leading-snug font-medium text-balance">Gemini Desktop Bridge – Agent Skill &amp; Protocol</p>
+                <p className="text-lg leading-snug font-medium text-balance">Blender Desktop Bridge – Model Context Protocol (MCP) Server</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right mt-1 size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
                   <path d="M7 7h10v10"></path>
                   <path d="M7 17 17 7"></path>
                 </svg>
               </div>
               <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
-                Real-time bidirectional bridge connecting terminal coding agents (powered by Gemini &amp; LLMs) directly to active desktop software through custom socket IPC streaming. Enables natural language 3D generation and asset pipeline automation.
+                Bidirectional Model Context Protocol (MCP) server connecting AI coding agents directly to active Blender desktop sessions via local IPC socket streaming. Enables autonomous Python (bpy) execution, real-time 3D asset generation, and viewport feedback.
               </p>
               <div className="flex flex-wrap items-center gap-1.5">
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">2026</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Socket / IPC</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Desktop Protocol</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">MCP Server</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Model Context Protocol</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python (bpy)</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Socket / IPC</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Automation</span>
               </div>
