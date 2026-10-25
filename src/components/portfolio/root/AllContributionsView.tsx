@@ -22,6 +22,15 @@ export function AllContributionsView() {
       tags: ["MCP Server", "Model Context Protocol", "Python", "Blender API", "Socket IPC"]
     },
     {
+      title: "halohanzi",
+      repo: "FidelCristopher/halohanzi",
+      url: "https://github.com/FidelCristopher/halohanzi",
+      description: "Intuitive, story-driven Mandarin Chinese learning Android application built with Jetpack Compose, Kotlin 2.2, interactive graded readers, and native offline Text-to-Speech.",
+      stars: 0,
+      language: "Kotlin",
+      tags: ["Kotlin", "Jetpack Compose", "Android", "Material3", "Offline TTS", "Education"]
+    },
+    {
       title: "Scientific-Computing",
       repo: "FidelCristopher/Scientific-Computing",
       url: "https://github.com/FidelCristopher/Scientific-Computing",

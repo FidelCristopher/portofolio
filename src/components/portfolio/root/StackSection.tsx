@@ -110,6 +110,14 @@ export function StackSection() {
               </a>
             </li>
             <li className="flex">
+              <a href="https://kotlinlang.org/" target="_blank" rel="noopener noreferrer" className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-muted/60 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border transition-colors hover:bg-muted/90 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="size-3.5 text-purple-400">
+                  <path d="M24 24H0V0h24L12 12Z"/>
+                </svg>
+                Kotlin 2.2
+              </a>
+            </li>
+            <li className="flex">
               <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-muted/60 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border transition-colors hover:bg-muted/90 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="/icons/tech-stack-v1.svg#typescript"></use></svg>
                 TypeScript
@@ -130,13 +138,22 @@ export function StackSection() {
           </ul>
         </div>
 
-        {/* 03: Web, 3D & Interface Engineering */}
+        {/* 03: Web, Mobile, 3D & Interface Engineering */}
         <div className="grid items-start gap-y-2 border-b border-line py-4 last:border-none sm:grid-cols-[var(--col-left-width)_1fr]">
           <div className="pl-4 text-sm/[--badge-height] text-muted-foreground">
             <span className="mr-1.5 font-mono text-muted-foreground select-none">03</span>
-            Web, 3D &amp; Interface
+            Web, Mobile &amp; 3D
           </div>
           <ul className="flex flex-wrap gap-1.5 px-4">
+            <li className="flex">
+              <a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener noreferrer" className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-muted/60 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border transition-colors hover:bg-muted/90 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-smartphone">
+                  <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                  <path d="M12 18h.01"/>
+                </svg>
+                Android / Jetpack Compose
+              </a>
+            </li>
             <li className="flex">
               <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" className="flex h-(--badge-height) items-center justify-center gap-1.5 rounded-lg bg-muted/60 px-1.75 font-mono text-xs text-foreground inset-ring-1 inset-ring-border transition-colors hover:bg-muted/90 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground/80">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="/icons/tech-stack-v1.svg#nextjs2"></use></svg>
