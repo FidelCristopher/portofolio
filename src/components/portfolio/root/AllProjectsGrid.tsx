@@ -77,7 +77,45 @@ export function AllProjectsGrid() {
           </a>
         </div>
 
-        {/* Project 3: VoiceDeck */}
+        {/* Project 3: AutoCast */}
+        <div id="project-autocast" className="group flex flex-col gap-2 bg-background p-3 transition-[background-color] duration-200 ease-out hover:bg-accent-muted">
+          <a
+            className="flex h-full flex-col gap-2 rounded-lg focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+            href="https://github.com/FidelCristopher/AutoCast"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-lg border border-line bg-zinc-950 select-none">
+              <img
+                alt="AutoCast Automation Desktop App Thumbnail"
+                src="/projects/autocast/thumbnail.svg"
+                className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-col gap-2 p-2">
+              <div className="flex items-start justify-between gap-3">
+                <p className="text-lg leading-snug font-medium text-balance">AutoCast – Autonomous Video Pipeline &amp; YouTube Publication Desktop App</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right mt-1 size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </div>
+              <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
+                Automated desktop application for streamlined narrative storytelling, headless audiovisual synthesis, and automated publication scheduling. Powered by Gemini 2.5 Flash for scriptwriting, Playwright for headless browser workspace export, and YouTube Data API v3 for chunked video uploads and release scheduling.
+              </p>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">2026</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Gemini 2.5 Flash</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Playwright</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">YouTube Data API v3</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">CustomTkinter</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        {/* Project 4: VoiceDeck */}
         <div id="project-voicedeck" className="group flex flex-col gap-2 bg-background p-3 transition-[background-color] duration-200 ease-out hover:bg-accent-muted">
           <a
             className="flex h-full flex-col gap-2 rounded-lg focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"

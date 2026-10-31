@@ -31,6 +31,15 @@ export function AllContributionsView() {
       tags: ["Kotlin", "Jetpack Compose", "Android", "Material3", "Offline TTS", "Education"]
     },
     {
+      title: "AutoCast",
+      repo: "FidelCristopher/AutoCast",
+      url: "https://github.com/FidelCristopher/AutoCast",
+      description: "Automated desktop application for scriptwriting via Gemini 2.5 Flash, headless video synthesis with Playwright, and scheduled YouTube publication via Data API v3.",
+      stars: 0,
+      language: "Python",
+      tags: ["Python", "Gemini 2.5 Flash", "Playwright", "YouTube Data API v3", "CustomTkinter", "Automation"]
+    },
+    {
       title: "Scientific-Computing",
       repo: "FidelCristopher/Scientific-Computing",
       url: "https://github.com/FidelCristopher/Scientific-Computing",

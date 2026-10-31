@@ -20,7 +20,7 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
       <header data-slot="panel-header" className="border-b border-line px-4 has-data-[slot=panel-description]:*:data-[slot=panel-title]:border-b has-data-[slot=panel-description]:*:data-[slot=panel-title]:border-line">
         <div className="flex items-center justify-between gap-3">
           <h2 data-slot="panel-title" className="font-handwritten text-3xl font-semibold tracking-tight">
-            Projects<sup className="top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground">(6)</sup>
+            Projects<sup className="top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground">(7)</sup>
           </h2>
           {onViewAllProjects ? (
             <button
@@ -109,6 +109,44 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Jetpack Compose</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Native TTS</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">HSK 1-2+</span>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4 text-muted-foreground" aria-hidden="true">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        {/* Project 3: AutoCast */}
+        <div className="border-b border-line">
+          <a
+            className="flex items-center pr-2 transition-colors duration-200 ease-out hover:bg-accent-muted"
+            href="https://github.com/FidelCristopher/AutoCast"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="flex w-15 shrink-0 items-center justify-center">
+              <div className="flex size-7 items-center justify-center rounded-lg border border-border select-none bg-black p-1 ring-1 ring-line">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-clapperboard size-4 text-red-500">
+                  <path d="M20.2 6 3 11l-.9-2.4 17.2-5Z" />
+                  <path d="m6.2 5.3 3.1 3.9" />
+                  <path d="m12.4 3.4 3.1 4" />
+                  <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex-1 border-l border-dashed border-line p-4 pr-2">
+              <p className="mb-1 leading-snug font-medium text-balance">
+                AutoCast – Autonomous Video Pipeline &amp; YouTube Publication Desktop App
+              </p>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-sm text-muted-foreground">2026</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Gemini 2.5 Flash</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Playwright</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">YouTube Data API v3</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">CustomTkinter</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Python</span>
               </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right size-4 text-muted-foreground" aria-hidden="true">
