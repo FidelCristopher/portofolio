@@ -101,11 +101,11 @@ export function AllProjectsGrid() {
                 </svg>
               </div>
               <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
-                Automated desktop application for streamlined narrative storytelling, headless audiovisual synthesis, and automated publication scheduling. Powered by Gemini 2.5 Flash for scriptwriting, Playwright for headless browser workspace export, and YouTube Data API v3 for chunked video uploads and release scheduling.
+                Automated desktop application for streamlined narrative storytelling, headless audiovisual synthesis, and automated publication scheduling. Powered by Gemini 3.8 Flash for scriptwriting, Playwright for headless browser workspace export, and YouTube Data API v3 for chunked video uploads and release scheduling.
               </p>
               <div className="flex flex-wrap items-center gap-1.5">
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">2026</span>
-                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Gemini 2.5 Flash</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Gemini 3.8 Flash</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Playwright</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">YouTube Data API v3</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">CustomTkinter</span>

@@ -34,10 +34,10 @@ export function AllContributionsView() {
       title: "AutoCast",
       repo: "FidelCristopher/AutoCast",
       url: "https://github.com/FidelCristopher/AutoCast",
-      description: "Automated desktop application for scriptwriting via Gemini 2.5 Flash, headless video synthesis with Playwright, and scheduled YouTube publication via Data API v3.",
+      description: "Automated desktop application for scriptwriting via Gemini 3.8 Flash, headless video synthesis with Playwright, and scheduled YouTube publication via Data API v3.",
       stars: 0,
       language: "Python",
-      tags: ["Python", "Gemini 2.5 Flash", "Playwright", "YouTube Data API v3", "CustomTkinter", "Automation"]
+      tags: ["Python", "Gemini 3.8 Flash", "Playwright", "YouTube Data API v3", "CustomTkinter", "Automation"]
     },
     {
       title: "Scientific-Computing",
