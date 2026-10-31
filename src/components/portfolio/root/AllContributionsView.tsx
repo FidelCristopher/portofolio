@@ -34,10 +34,10 @@ export function AllContributionsView() {
       title: "AutoCast",
       repo: "FidelCristopher/AutoCast",
       url: "https://github.com/FidelCristopher/AutoCast",
-      description: "Automated desktop application for scriptwriting via Gemini 3.8 Flash, headless video synthesis with Playwright, and scheduled YouTube publication via Data API v3.",
+      description: "Automated desktop app for multi-provider script generation (Pi Agent Gemini 3.8 Flash / Ollama), programmatic Remotion (React 19) video synthesis, and scheduled YouTube publication.",
       stars: 0,
       language: "Python",
-      tags: ["Python", "Gemini 3.8 Flash", "Playwright", "YouTube Data API v3", "CustomTkinter", "Automation"]
+      tags: ["Python", "Remotion", "React 19", "Gemini 3.8 Flash", "Playwright", "YouTube Data API v3", "CustomTkinter"]
     },
     {
       title: "Scientific-Computing",

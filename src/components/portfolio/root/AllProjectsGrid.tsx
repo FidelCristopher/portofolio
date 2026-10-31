@@ -101,10 +101,12 @@ export function AllProjectsGrid() {
                 </svg>
               </div>
               <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
-                Automated desktop application for streamlined narrative storytelling, headless audiovisual synthesis, and automated publication scheduling. Powered by Gemini 3.8 Flash for scriptwriting, Playwright for headless browser workspace export, and YouTube Data API v3 for chunked video uploads and release scheduling.
+                Automated desktop application for streamlined narrative storytelling, dynamic code-to-video synthesis via Remotion (React 19), headless Playwright workflows, and automated YouTube Data API v3 scheduling. Supports multi-provider script generation including Pi Agent (Gemini 3.8 Flash), OpenAI-compatible local LLMs (Ollama / LiteLLM), and official Google Gemini API.
               </p>
               <div className="flex flex-wrap items-center gap-1.5">
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">2026</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Remotion</span>
+                <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">React 19</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Gemini 3.8 Flash</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">Playwright</span>
                 <span data-slot="tag" className="inline-flex items-center rounded-md border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">YouTube Data API v3</span>
