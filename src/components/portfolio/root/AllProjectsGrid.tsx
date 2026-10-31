@@ -87,8 +87,8 @@ export function AllProjectsGrid() {
           >
             <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-lg border border-line bg-zinc-950 select-none">
               <img
-                alt="AutoCast Automation Desktop App Thumbnail"
-                src="/projects/autocast/thumbnail.svg"
+                alt="AutoCast Automation Desktop App"
+                src="/projects/autocast/logo.jpeg"
                 className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
             </div>
