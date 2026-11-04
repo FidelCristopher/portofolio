@@ -87,15 +87,8 @@ export function ProjectsSection({ onViewAllProjects }: ProjectsSectionProps) {
             rel="noopener noreferrer"
           >
             <div className="flex w-15 shrink-0 items-center justify-center">
-              <div className="flex size-7 items-center justify-center rounded-lg border border-border select-none bg-black p-1 ring-1 ring-line">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-languages size-4 text-rose-400">
-                  <path d="m5 8 6 6" />
-                  <path d="m4 14 6-6 2-3" />
-                  <path d="M2 5h12" />
-                  <path d="M7 2h1" />
-                  <path d="m22 22-5-10-5 10" />
-                  <path d="M14 18h6" />
-                </svg>
+              <div className="flex size-7 items-center justify-center rounded-lg border border-border select-none bg-black p-0.5 overflow-hidden ring-1 ring-line">
+                <img src="/projects/halohanzi/logo.jpeg" alt="HaloHanzi Logo" className="size-full object-cover rounded-md" />
               </div>
             </div>
             <div className="flex-1 border-l border-dashed border-line p-4 pr-2">

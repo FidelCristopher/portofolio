@@ -49,8 +49,8 @@ export function AllProjectsGrid() {
           >
             <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-lg border border-line bg-zinc-950 select-none">
               <img
-                alt="HaloHanzi Mandarin Learning App Thumbnail"
-                src="/projects/halohanzi/thumbnail.svg"
+                alt="HaloHanzi Mandarin Learning App"
+                src="/projects/halohanzi/logo.jpeg"
                 className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
             </div>
